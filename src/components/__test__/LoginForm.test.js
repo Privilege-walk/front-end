@@ -1,16 +1,12 @@
 import React from "react";
 import { render, fireEvent, screen } from '@testing-library/react';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { act } from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
-
-jest.mock("react-router-dom", () => ({Navigate: () => "Navigate"}))
-
 import MockAdapter from "axios-mock-adapter";
-
 import LoginForm from '../LoginForm';
 
-const errMessage = "Please check your username or password!";
+jest.mock("react-router-dom", () => ({Navigate: () => "Navigate"}))
 
 const setup = () => {
     let utils;
@@ -83,6 +79,7 @@ test('Failed login', async () => {
     await act(async () => {
         await fireEvent.click(submitBtn);
     });
+    const errMessage = "Please check your username or password!";
     expect(errDiv).toHaveTextContent(errMessage);
     
 });
