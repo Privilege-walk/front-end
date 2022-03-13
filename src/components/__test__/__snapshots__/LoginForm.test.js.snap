@@ -21,7 +21,7 @@ exports[`renders without crashing 1`] = `
         <input
           class="form-control"
           id="username-input"
-          type="text"
+          type="username"
           value=""
         />
       </div>

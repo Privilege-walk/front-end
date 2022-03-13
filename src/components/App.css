@@ -12,6 +12,6 @@
   padding: 60px 0;
 }
 
-errMsg {
+.errMsg {
   color: red;
 }
