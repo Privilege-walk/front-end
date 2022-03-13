@@ -7,7 +7,7 @@ import {
 import LoginForm from './LoginForm';
 import Welcome from './Welcome';
 
-class App extends Component {
+class App extends React.Component {
 
     render() {
         // return (

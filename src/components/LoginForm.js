@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
+import {Label, Button, FormGroup, Input} from 'reactstrap';
+
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import "./App.css";
@@ -18,9 +20,7 @@ export default function LoginForm() {
   function handleSubmit(event) {
     event.preventDefault();
     axios.post(`http://localhost:8000/auth/login/`, { username, password })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
+      .then(async res => {
         if (res.data.status === true) {
             setLogin(true);
         } else {
@@ -32,29 +32,34 @@ export default function LoginForm() {
   return (
     <div className="Login">
       <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="username">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            autoFocus
-            type="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+        <FormGroup size="lg" id="username">
+          <Label htmlFor="username-input">
+            Username
+          </Label>
+          <Input
+              autoFocus
+              id="username-input"
+              // type="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          
+        </FormGroup>
+        <FormGroup size="lg" id="password">
+          <Label htmlFor="password-input">Password</Label>
+          <Input
+            id="password-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </Form.Group>
+        </FormGroup>
         <Button size="lg" type="submit" 
           disabled={!validateForm()}
         >
           Login
         </Button>
-        <div className="errMsg">{errMsg}</div>
+        <div data-testid="loginErrorId" className="errMsg">{errMsg}</div>
       </Form>
       {
           login &&

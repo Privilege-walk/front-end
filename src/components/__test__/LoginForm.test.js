@@ -1,9 +1,88 @@
 import React from "react";
-import { render } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
+import axios, { AxiosResponse } from 'axios';
+import { act } from 'react-dom/test-utils';
+import '@testing-library/jest-dom';
+
+jest.mock("react-router-dom", () => ({Navigate: () => "Navigate"}))
+
+import MockAdapter from "axios-mock-adapter";
 
 import LoginForm from '../LoginForm';
 
-it('renders without crashing',  ()=> {
-    const { asFragment } = render(<LoginForm />);
+const errMessage = "Please check your username or password!";
+
+const setup = () => {
+    let utils;
+    act (() => {
+        utils = render(<LoginForm />);
+    }) 
+    const usernameInput = screen.getByLabelText('Username');
+    const passwordInput = screen.getByLabelText('Password');
+    const submitBtn = screen.getByText('Login', {selector: 'button'});
+    const errDiv = screen.getByTestId('loginErrorId');
+    return {
+        usernameInput,
+        passwordInput,
+        submitBtn,
+        errDiv,
+        ...utils
+    }
+}
+test('renders without crashing',  ()=> {
+    const utils = setup(); 
+    const { asFragment, usernameInput, passwordInput } = utils;
     expect(asFragment()).toMatchSnapshot();
-})
+    expect(usernameInput.value).toBe('');
+    expect(passwordInput.value).toBe('');
+});
+
+test('Successful login',  async ()=> {
+    const utils = setup(); 
+    const { usernameInput, passwordInput, submitBtn, errDiv } = utils;
+    const username = "user";
+    const password = "password"
+    var mock = new MockAdapter(axios);
+    mock.onPost(
+        'http://localhost:8000/auth/login/', 
+        {username,  password}
+    ).reply(200, {status: true, token: "token"});
+    
+    expect(submitBtn).toHaveProperty('disabled', true);
+    fireEvent.change(usernameInput, {target: {value: username}});
+    expect(submitBtn).toHaveProperty('disabled', true);
+    fireEvent.change(passwordInput, {target: {value: password}});
+    expect(submitBtn).toHaveProperty('disabled', false);
+    
+    expect(errDiv).toHaveTextContent("");
+    await act(async () => {   
+        await fireEvent.click(submitBtn);
+    });
+    expect(errDiv).toHaveTextContent("");
+    
+});
+
+test('Failed login', async () => {
+    const utils = setup(); 
+    const { usernameInput, passwordInput, submitBtn, errDiv } = utils;
+    const username = "user";
+    const password = "password";
+    var mock = new MockAdapter(axios);
+    mock.onPost(
+        'http://localhost:8000/auth/login/', 
+        {username,  password}
+    ).reply(200, {status: false});
+    
+    expect(submitBtn).toHaveProperty('disabled', true);
+    fireEvent.change(usernameInput, {target: {value: username}});
+    expect(submitBtn).toHaveProperty('disabled', true);
+    fireEvent.change(passwordInput, {target: {value: password}});
+    expect(submitBtn).toHaveProperty('disabled', false);
+    
+    expect(errDiv).toHaveTextContent("");
+    await act(async () => {
+        await fireEvent.click(submitBtn);
+    });
+    expect(errDiv).toHaveTextContent(errMessage);
+    
+});

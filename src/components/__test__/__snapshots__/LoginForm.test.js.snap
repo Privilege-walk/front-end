@@ -8,40 +8,51 @@ exports[`renders without crashing 1`] = `
     <form
       class=""
     >
-      <div>
+      <div
+        class="mb-3"
+        id="username"
+      >
         <label
           class="form-label"
-          for="username"
+          for="username-input"
         >
           Username
         </label>
         <input
           class="form-control"
-          id="username"
-          type="username"
+          id="username-input"
+          type="text"
           value=""
         />
       </div>
-      <div>
+      <div
+        class="mb-3"
+        id="password"
+      >
         <label
           class="form-label"
-          for="password"
+          for="password-input"
         >
           Password
         </label>
         <input
           class="form-control"
-          id="password"
+          id="password-input"
           type="password"
           value=""
         />
       </div>
       <button
-        class="btn btn-primary btn-lg"
+        class="btn btn-secondary btn-lg disabled"
+        disabled=""
         type="submit"
       >
         Login
       </button>
+      <div
+        class="errMsg"
+        data-testid="loginErrorId"
+      />
     </form>
   </div>
 </DocumentFragment>
