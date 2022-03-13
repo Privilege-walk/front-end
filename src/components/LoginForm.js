@@ -14,7 +14,7 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post(`http://localhost:8000/auth/login`, { username, password })
+    axios.post(`http://localhost:8000/auth/login/`, { username, password})
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -41,7 +41,9 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button size="lg" type="submit" 
+          disabled={!validateForm()}
+        >
           Login
         </Button>
       </Form>

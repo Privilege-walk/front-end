@@ -1,5 +1,6 @@
 const config = {
     "verbose": true,
+    "testEnvironment": "jsdom",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/jspm_packages"
@@ -8,7 +9,7 @@ const config = {
       "./node_modules/react"
     ],
     roots: [
-      "../__tests__"
+      "src/components/__test__"
     ],
     modulePaths: [
       "./__stubs__"
