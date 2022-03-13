@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
-// import "./App.css";
+import { Navigate } from "react-router-dom";
+import "./App.css";
 
-export default function Login() {
+export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [login, setLogin] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
   function validateForm() {
     return username.length > 0 && password.length > 0;
@@ -14,10 +17,15 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post(`http://localhost:8000/auth/login`, { username, password })
+    axios.post(`http://localhost:8000/auth/login/`, { username, password })
       .then(res => {
         console.log(res);
         console.log(res.data);
+        if (res.data.status === true) {
+            setLogin(true);
+        } else {
+            setErrMsg("Please check your username or password!");
+        }
       })
   }
 
@@ -44,7 +52,12 @@ export default function Login() {
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>
+        <div className="errMsg">{errMsg}</div>
       </Form>
+      {
+          login &&
+          <Navigate to="/loggedin" />
+      }
     </div>
   );
 }
