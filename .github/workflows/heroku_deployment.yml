@@ -15,8 +15,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Manual docker build and deploy to heroku
-        run: |
-          - echo Howdy
+        run:
+          echo Howdy
 
       ### ⬇ IMPORTANT PART ⬇ ###
 
