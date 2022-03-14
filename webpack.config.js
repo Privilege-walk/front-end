@@ -16,6 +16,10 @@ module.exports = {
         })
     ],
 
+    devServer: {
+        allowedHosts: 'all'
+    },
+
     module: {
         rules: [
             {
