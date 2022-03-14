@@ -17,8 +17,8 @@ module.exports = {
     ],
 
     devServer: {
-        disableHostCheck: true
-    }
+        allowedHosts: 'all'
+    },
 
     module: {
         rules: [
