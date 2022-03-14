@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "test": "jest",
+    "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
     "test-bdd": "cypress open",
     "lint": "eslint .",
     "lint-fix": "eslint --fix",
@@ -24,7 +25,7 @@
     "react-router-dom": "^6.2.2",
     "reactstrap": "^9.0.1"
   },
-  "devDependencies": {
+  "d. evDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
