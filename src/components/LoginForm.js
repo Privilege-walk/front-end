@@ -17,9 +17,17 @@ export default function LoginForm() {
     return username.length > 0 && password.length > 0;
   }
 
+  function getBaseUrl() {
+    if(window.location.href.includes('localhost') === true) {
+      return `http://localhost:8000`;
+    }
+    return `https://privilegewalkbe.herokuapp.com`;
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post(`http://localhost:8000/auth/login/`, { username, password })
+    console.log(getBaseUrl())
+    axios.post(getBaseUrl() + `/auth/login/`, { username, password })
       .then(async res => {
         if (res.data.status === true) {
             setLogin(true);

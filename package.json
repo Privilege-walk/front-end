@@ -8,9 +8,9 @@
     "build": "webpack --mode production",
     "test": "jest",
     "test-bdd": "cypress open",
-    "lint": "eslint .",
-    "lint-fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "lint": "./node_modules/.bin/eslint .",
+    "lint:fix": "./node_modules/.bin/eslint --fix",
+    "format": "./node_modules/.bin/prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "keywords": [],
   "author": "",
@@ -43,6 +43,7 @@
     "cypress-cucumber-preprocessor": "^4.3.1",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.3",
@@ -52,6 +53,7 @@
     "jest": "^27.5.1",
     "jest-transform-stub": "^2.0.0",
     "lint-staged": "^12.3.5",
+    "multiple-cucumber-html-reporter": "^1.19.0",
     "prettier": "^2.5.1",
     "react-test-renderer": "^17.0.2",
     "style-loader": "^3.3.1",
@@ -61,7 +63,13 @@
     "webpack-dev-server": "^4.7.4"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   },
   "lint-staged": {
     "*.+(js|jsx)": [

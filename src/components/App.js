@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Routes,
   Route
@@ -12,8 +12,8 @@ class App extends React.Component {
         return (
             <div>
                 <Routes>
-                        <Route exact path="/" element={<LoginForm />} />
-                        <Route path="/loggedin" element={<Welcome />} />
+                    <Route exact path="/" element={<LoginForm />} />
+                    <Route path="/loggedin" element={<Welcome />} />
                 </Routes>
             </div>
         );
