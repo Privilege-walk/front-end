@@ -1,0 +1,163 @@
+[
+  {
+    "description": "    I want to login to the app",
+    "keyword": "Feature",
+    "name": "Login",
+    "line": 1,
+    "id": "login",
+    "tags": [],
+    "uri": "Login.feature",
+    "elements": [
+      {
+        "id": "login;app-login",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "App login",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I open login page",
+            "result": {
+              "status": "passed",
+              "duration": 1854000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I type in username and password",
+            "result": {
+              "status": "passed",
+              "duration": 1553000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I click on Login button",
+            "result": {
+              "status": "passed",
+              "duration": 345000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I should see the welcome text",
+            "result": {
+              "status": "passed",
+              "duration": 306000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "login;app-login-with-wrong-username",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "App login with wrong username",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I open login page",
+            "result": {
+              "status": "passed",
+              "duration": 456000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I type in wrong username and password",
+            "result": {
+              "status": "passed",
+              "duration": 770000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I click on Login button",
+            "result": {
+              "status": "passed",
+              "duration": 108000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I should see the error message",
+            "result": {
+              "status": "passed",
+              "duration": 9000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "login;app-login-with-wrong-password",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "App login with wrong password",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 18,
+            "name": "I open login page",
+            "result": {
+              "status": "passed",
+              "duration": 254000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 19,
+            "name": "I type in username and wrong password",
+            "result": {
+              "status": "passed",
+              "duration": 572000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "I click on Login button",
+            "result": {
+              "status": "passed",
+              "duration": 123000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "I should see the error message",
+            "result": {
+              "status": "passed",
+              "duration": 159000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

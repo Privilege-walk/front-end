@@ -2,7 +2,9 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "jest/globals": true
+        "jest/globals": true,
+        "cypress/globals": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -19,9 +21,15 @@
     "plugins": [
         "react",
         "prettier",
-        "jest"
+        "jest",
+        "cypress"
     ],
     "rules": {
         "react/react-in-jsx-scope": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+          }
     }
 }

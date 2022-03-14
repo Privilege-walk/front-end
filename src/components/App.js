@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {
+  Routes,
+  Route
+} from "react-router-dom";
+import LoginForm from './LoginForm';
+import Welcome from './Welcome';
 
-class App extends Component {
+class App extends React.Component {
 
     render() {
         return (
             <div>
-                <h1>Hello World!</h1>
+                <Routes>
+                    <Route exact path="/" element={<LoginForm />} />
+                    <Route path="/loggedin" element={<Welcome />} />
+                </Routes>
             </div>
         );
     }

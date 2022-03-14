@@ -7,20 +7,27 @@
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "test": "jest",
+    "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
     "test-bdd": "cypress open",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "lint": "./node_modules/.bin/eslint .",
+    "lint:fix": "./node_modules/.bin/eslint --fix",
+    "format": "./node_modules/.bin/prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.1",
+    "bootstrap": "^5.1.3",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-bootstrap": "^2.2.1",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.2",
+    "reactstrap": "^9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@testing-library/cypress": "^8.0.2",
@@ -28,23 +35,42 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.1",
+    "axios-mock-adapter": "^1.20.0",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.3",
+    "css-loader": "^6.7.1",
     "cypress": "^9.5.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.3",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "jest-transform-stub": "^2.0.0",
     "lint-staged": "^12.3.5",
+    "multiple-cucumber-html-reporter": "^1.19.0",
     "prettier": "^2.5.1",
     "react-test-renderer": "^17.0.2",
+    "style-loader": "^3.3.1",
+    "ts-jest": "^27.1.3",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   },
   "lint-staged": {
     "*.+(js|jsx)": [
@@ -57,7 +83,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint-fix && npm run format"
     }
   }
 }
