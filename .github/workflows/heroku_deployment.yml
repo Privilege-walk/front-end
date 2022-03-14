@@ -17,6 +17,7 @@ jobs:
       - name: Manual docker build and deploy to heroku
         run:
           echo Howdy
+          echo How are you?
 
       ### ⬇ IMPORTANT PART ⬇ ###
 
