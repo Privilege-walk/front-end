@@ -18,4 +18,4 @@ COPY . ./
 
 # start app
 # CMD ["npm", "start"]
-CMD npm start -- --port $PORT
+#CMD npm start -- --port $PORT
