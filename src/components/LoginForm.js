@@ -6,6 +6,7 @@ import {Label, Button, FormGroup, Input} from 'reactstrap';
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import "./App.css";
+import { getBaseUrl } from "../functions";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -17,28 +18,27 @@ export default function LoginForm() {
     return username.length > 0 && password.length > 0;
   }
 
-  function getBaseUrl() {
-    if(window.location.href.includes('localhost') === true) {
-      return `http://localhost:8000`;
-    }
-    return `https://privilegewalkbe.herokuapp.com`;
-  }
+  // function getBaseUrl() {
+  //   if(window.location.href.includes('localhost') === true) {
+  //     return `http://localhost:8000`;
+  //   }
+  //   return `https://privilegewalkbe.herokuapp.com`;
+  // }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(getBaseUrl())
-    axios.post(getBaseUrl() + `/auth/login/`, { username, password })
+    axios.post(getBaseUrl(window) + `/auth/login/`, { username, password })
       .then(async res => {
         if (res.data.status === true) {
             setLogin(true);
         } else {
             setErrMsg("Please check your username or password!");
         }
-      })
+      });
   }
 
   return (
-    <div className="Login">
+    <div className="Form">
       <Form onSubmit={handleSubmit}>
         <FormGroup size="lg" id="username">
           <Label htmlFor="username-input">

@@ -7,7 +7,8 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, '/build'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
 
     plugins: [
@@ -17,7 +18,8 @@ module.exports = {
     ],
 
     devServer: {
-        allowedHosts: 'all'
+        allowedHosts: 'all',
+        historyApiFallback: true
     },
 
     module: {
