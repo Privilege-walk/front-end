@@ -74,5 +74,17 @@ test('Successful sign up', async () => {
     });
     expect(errDiv).toHaveTextContent("");
     expect(handleSubmit).toHaveBeenCalledWith(formData);
-})
+});
+
+test('Unsuccessful sign up', async () => {
+    const utils = setup(); 
+    const {signupBtn, errDiv, handleSubmit } = utils;
+
+    expect(errDiv).toHaveTextContent("");
+    await act(async () => {   
+        await fireEvent.click(signupBtn);
+    });
+    expect(errDiv).toHaveTextContent("");
+    expect(handleSubmit).not.toHaveBeenCalled();
+});
 
