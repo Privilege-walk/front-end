@@ -12,7 +12,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstPage: "login"
+            firstPage: "login",
+            loggedIn: false
         }
     }
 
@@ -21,6 +22,7 @@ class App extends React.Component {
     }
 
     renderPages = () => {
+        
         if (!this.props.token && this.state.firstPage === 'login') {
             return (<LoginForm setFirstPage={this.changeFirstPage} />);
         } else if (this.state.firstPage === 'signup') {

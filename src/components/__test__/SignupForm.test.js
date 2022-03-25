@@ -11,12 +11,9 @@
 // Email exists.
 import React from "react";
 import { render, fireEvent, screen } from '@testing-library/react';
-import axios from 'axios';
 import { act } from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
-import MockAdapter from "axios-mock-adapter";
 import SignupForm from '../SignupForm';
-import { getBaseUrl } from "../../functions";
 
 jest.mock("react-router-dom", () => ({Navigate: () => "Navigate"}))
 

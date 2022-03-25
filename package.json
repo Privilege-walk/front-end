@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open --hot --config ./build/webpack.config.dev.js",
+    "build": "webpack --mode production --config ./build/webpack.config.prod.js",
     "test": "jest",
     "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
     "test-bdd": "cypress open",

@@ -5,7 +5,6 @@ import { Navigate } from "react-router-dom";
 import * as yup from 'yup';
 
 import Form from "react-bootstrap/Form";
-import { getBaseUrl } from "../functions";
 import {
     Label, 
     Button, 
@@ -15,6 +14,7 @@ import {
     Row,
     Col
 } from 'reactstrap';
+import { restClient } from '../api/rest_interceptor';
 
 
 
@@ -40,8 +40,7 @@ export default function SignUpForm({onSubmit,setFirstPage}) {
             "password": formData["password"],
             "email": formData["email"]
         };
-        const url = getBaseUrl(window) + "/auth/signup/";
-        axios.post(url, data).then(async res => {
+        restClient.post("/auth/signup/", data).then(async res => {
             if(res.data.created == "success"){
                 setLogin(true);
                 setFirstPage('login');

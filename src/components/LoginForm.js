@@ -3,10 +3,9 @@ import Form from "react-bootstrap/Form";
 // import Button from "react-bootstrap/Button";
 import {Label, Button, FormGroup, Input} from 'reactstrap';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import "./App.css";
-import { getBaseUrl } from "../functions";
+import { restClient } from "../api/rest_interceptor";
 
 function LoginForm({storeAuthToken,setFirstPage}) {
   const [username, setUsername] = useState("");
@@ -18,19 +17,13 @@ function LoginForm({storeAuthToken,setFirstPage}) {
     return username.length > 0 && password.length > 0;
   }
 
-  // function getBaseUrl() {
-  //   if(window.location.href.includes('localhost') === true) {
-  //     return `http://localhost:8000`;
-  //   }
-  //   return `https://privilegewalkbe.herokuapp.com`;
-  // }
-
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post(getBaseUrl(window) + `/auth/login/`, { username, password })
+    restClient.post(`/auth/login/`, { username, password })
       .then(async res => {
         if (res.data.status === true) {
             setLogin(true);
+            localStorage.setItem("token", res.data.token);
             storeAuthToken(res.data.token);
         } else {
             setErrMsg("Please check your username or password!");

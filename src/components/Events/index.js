@@ -2,9 +2,8 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import {Label, Button, FormGroup, Input} from 'reactstrap';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { getBaseUrl } from "../../functions";
 import "../App.css";
+import {restClient } from "../../api/rest_interceptor";
 
 class Events extends React.Component {
     constructor(props) {
@@ -33,7 +32,7 @@ class Events extends React.Component {
     }
     
     fetchAllEvents = () => {
-        axios.get(getBaseUrl(window) + `/host/events/all/`, {
+        restClient.get(`/host/events/all/`, {
             headers: { "Authorization": "Token " + this.props.token } 
         }).then(async res => {
             if (res.data && res.data.hasOwnProperty('events')) {
@@ -45,7 +44,7 @@ class Events extends React.Component {
     }
 
     handleSubmit = () => {
-        axios.post(getBaseUrl(window) + `/host/events/create/`, 
+        restClient.post(`/host/events/create/`, 
             { name: this.state.newEventName },
             { headers: { "Authorization": "Token " + this.props.token } })
         .then(async res => {
