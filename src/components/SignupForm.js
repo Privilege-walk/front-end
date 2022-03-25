@@ -28,7 +28,7 @@ const schema = yup.object().shape({
 });
 
 
-export default function SignUpForm({onSubmit}) {
+export default function SignUpForm({onSubmit,setFirstPage}) {
     const [login, setLogin] = useState(false);
     const [errMsg, setErrMsg] = useState("");
 
@@ -44,6 +44,7 @@ export default function SignUpForm({onSubmit}) {
         axios.post(url, data).then(async res => {
             if(res.data.created == "success"){
                 setLogin(true);
+                setFirstPage('login');
             }else{
                 setErrMsg(res.data.created);
             }
@@ -60,6 +61,11 @@ export default function SignUpForm({onSubmit}) {
         }
         
     }
+
+    function onLogin() {
+        setFirstPage('login');
+    }
+
     return (
         <div className="Form">
         <Formik
@@ -155,7 +161,6 @@ export default function SignUpForm({onSubmit}) {
                         >
                             <Label htmlFor="password">Password</Label>
                             <Input
-                                type="text"
                                 id="password"
                                 type="password"
                                 name="password"
@@ -193,12 +198,18 @@ export default function SignUpForm({onSubmit}) {
 
                     <Row data-testid="signupErrorId" className="mb-3 errMsg justify-content-center">{errMsg}</Row>
 
-                    <Row className="justify-content-center my-2">
-                        <Button size="lg" type="submit" 
-                        >
-                            Sign Up
-                        </Button>
-                    </Row>
+                    {/* <Row className="justify-content-center my-2"> */}
+                    <Button size="lg" type="submit" 
+                    >
+                        Sign Up
+                    </Button>
+                    <Button size="lg"
+                        style={{marginLeft: 20}}
+                        onClick={onLogin}
+                    >
+                        Login
+                    </Button>
+                    {/* </Row> */}
                     
                 </Form>
             )}
@@ -206,7 +217,7 @@ export default function SignUpForm({onSubmit}) {
 
         {
             login &&
-            <Navigate to="/loggedin" />
+            <Navigate to="/" />
         }
         </div>
     )

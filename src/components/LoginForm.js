@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 // import Button from "react-bootstrap/Button";
 import {Label, Button, FormGroup, Input} from 'reactstrap';
-
+import { connect } from 'react-redux';
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import "./App.css";
 import { getBaseUrl } from "../functions";
 
-export default function LoginForm() {
+function LoginForm({storeAuthToken,setFirstPage}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
@@ -31,10 +31,15 @@ export default function LoginForm() {
       .then(async res => {
         if (res.data.status === true) {
             setLogin(true);
+            storeAuthToken(res.data.token);
         } else {
             setErrMsg("Please check your username or password!");
         }
       });
+  }
+
+  function onSignUp() {
+    setFirstPage('signup');
   }
 
   return (
@@ -67,12 +72,31 @@ export default function LoginForm() {
         >
           Login
         </Button>
+        <Button size="lg"
+          style={{marginLeft: 20}}
+          onClick={onSignUp}
+        >
+          Sign Up
+        </Button>
         <div data-testid="loginErrorId" className="errMsg">{errMsg}</div>
       </Form>
       {
           login &&
-          <Navigate to="/loggedin" />
+          <Navigate to="/events" />
       }
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    storeAuthToken: (authToken) => dispatch({ type: 'STORE_TOKEN', payload: authToken })
+  }
+};
+
+var LoginFormContainer = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default LoginFormContainer;

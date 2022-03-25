@@ -3,24 +3,58 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import { connect } from 'react-redux';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import Welcome from './Welcome';
+import Events from './Events';
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstPage: "login"
+        }
+    }
+
+    changeFirstPage = (firstPage) => {
+        this.setState({ firstPage },()=>console.log("HAHAHAHAHA: ",this.state.firstPage));
+    }
+
+    renderPages = () => {
+        if (!this.props.token && this.state.firstPage === 'login') {
+            return (<LoginForm setFirstPage={this.changeFirstPage} />);
+        } else if (this.state.firstPage === 'signup') {
+            return (<SignupForm setFirstPage={this.changeFirstPage} />);
+        } else {
+            return this.renderRoutes();
+        }
+    }
+
+    renderRoutes = () => {
+        return (
+            <Routes>
+                <Route exact path="/" element={<LoginForm />} />
+                <Route exact path="/signup" element={<SignupForm />} />
+                <Route path="/events" element={<Events />} />
+            </Routes>
+        );
+    }
 
     render() {
         return (
             <div>
-                <Routes>
-                    <Route exact path="/" element={<LoginForm />} />
-                    <Route exact path="/signup" element={<SignupForm />} />
-                    <Route path="/loggedin" element={<Welcome />} />
-                </Routes>
+                {this.renderPages()}
             </div>
         );
     }
 
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        token: state.authToken
+    };
+};
+
+var AppContainer = connect(mapStateToProps)(App);
+export default AppContainer;
