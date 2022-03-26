@@ -1,9 +1,11 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
-import {Label, Button, FormGroup, Input} from 'reactstrap';
+import {Label, Button, FormGroup, Input, Row, Col, Container} from 'reactstrap';
 import { connect } from 'react-redux';
 import "../App.css";
 import {restClient } from "../../api/restInterceptor";
+import EventListItem from "./EventListItem";
+
 
 class Events extends React.Component {
     constructor(props) {
@@ -32,9 +34,8 @@ class Events extends React.Component {
     }
     
     fetchAllEvents = () => {
-        restClient.get(`/host/events/all/`, {
-            headers: { "Authorization": "Token " + this.props.token } 
-        }).then(async res => {
+        restClient.get(`/host/events/all/`).then(async res => {
+            console.log(res);
             if (res.data && res.data.hasOwnProperty('events')) {
                 this.changeEventsList(res.data.events);
             } else {
@@ -43,11 +44,12 @@ class Events extends React.Component {
         });
     }
 
-    handleSubmit = () => {
-        restClient.post(`/host/events/create/`, 
-            { name: this.state.newEventName },
-            { headers: { "Authorization": "Token " + this.props.token } })
-        .then(async res => {
+    handleSubmit = async (event) => {
+        console.log(event)
+        await restClient.post(
+            `/host/events/create/`, 
+            { name: this.state.newEventName }
+        ).then(async res => {
             if (res.data && res.data.status === 'created') {
                 this.fetchAllEvents();
             } else {
@@ -58,8 +60,12 @@ class Events extends React.Component {
 
     render() {
         return (
-            <div>
+            <Container className="mx-2">
+                <Row>
                 <h1 className="event">Events</h1>
+                </Row>
+
+                <Row>
                 <Form onSubmit={this.handleSubmit} className="createEventForm">
                     <FormGroup size="lg" id="neweventname">
                         <Label htmlFor="new-event-name">New Event Name</Label>
@@ -77,16 +83,18 @@ class Events extends React.Component {
                     >
                         Create Event
                     </Button>
+                    
                 </Form>
-                <br/>
-                <br/>
+                </Row>
+                <Row>
                 {
                     this.state.eventsList.length === 0 ?
                     (<div style={{color:'gray',marginLeft:10}}><i>No events to show.</i></div>)
                     :
-                    (<div />)
+                    (this.state.eventsList.map( (item, _) => <EventListItem key={item.id} name={item.name} status={item.status} />))
                 }
-            </div>
+                </Row>
+            </Container>
         );
     }
 }
