@@ -8,15 +8,8 @@
   max-width: 320px;
 }
 
-.event {
-  padding: 15px 0;
-}
 
 .errMsg {
   color: red;
 }
 
-.createEventForm {
-  margin: 30px;
-  max-width: 320px;
-}
