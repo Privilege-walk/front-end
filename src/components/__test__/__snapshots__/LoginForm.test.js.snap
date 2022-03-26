@@ -49,6 +49,13 @@ exports[`renders without crashing 1`] = `
       >
         Login
       </button>
+      <button
+        class="btn btn-secondary btn-lg"
+        style="margin-left: 20px;"
+        type="button"
+      >
+        Sign Up
+      </button>
       <div
         class="errMsg"
         data-testid="loginErrorId"

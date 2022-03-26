@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
 import {Label, Button, FormGroup, Input} from 'reactstrap';
 import { connect } from 'react-redux';
 import { Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
 import { loginUser } from "../Store/actions";
-import { restClient } from "../api/restInterceptor";
 
 function LoginForm({token, loginUser,setFirstPage}) {
   const [username, setUsername] = useState("");
@@ -22,7 +20,6 @@ function LoginForm({token, loginUser,setFirstPage}) {
   async function handleSubmit(event) {
     event.preventDefault();
     const action = await loginUser({username, password});
-    console.log(action);
     if (action.payload.token){
       setLogin(true);
       navigate("/events");
@@ -83,7 +80,6 @@ function LoginForm({token, loginUser,setFirstPage}) {
 
 const mapStateToProps = state => {
   return {
-    // token: state.token
   };
 };
 
