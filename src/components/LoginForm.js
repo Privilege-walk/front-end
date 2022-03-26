@@ -3,32 +3,32 @@ import Form from "react-bootstrap/Form";
 // import Button from "react-bootstrap/Button";
 import {Label, Button, FormGroup, Input} from 'reactstrap';
 import { connect } from 'react-redux';
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
-import { restClient } from "../api/rest_interceptor";
+import { loginUser } from "../Store/actions";
+import { restClient } from "../api/restInterceptor";
 
-function LoginForm({storeAuthToken,setFirstPage}) {
+function LoginForm({token, loginUser,setFirstPage}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+  const navigate = useNavigate();
 
   function validateForm() {
     return username.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    restClient.post(`/auth/login/`, { username, password })
-      .then(async res => {
-        if (res.data.status === true) {
-            setLogin(true);
-            localStorage.setItem("token", res.data.token);
-            storeAuthToken(res.data.token);
-        } else {
-            setErrMsg("Please check your username or password!");
-        }
-      });
+    const action = await loginUser({username, password});
+    console.log(action);
+    if (action.payload.token){
+      setLogin(true);
+      navigate("/events");
+    }else{
+      setErrMsg("Please check your username or password!");
+    }
   }
 
   function onSignUp() {
@@ -74,7 +74,7 @@ function LoginForm({storeAuthToken,setFirstPage}) {
         <div data-testid="loginErrorId" className="errMsg">{errMsg}</div>
       </Form>
       {
-          login &&
+          token &&
           <Navigate to="/events" />
       }
     </div>
@@ -82,13 +82,13 @@ function LoginForm({storeAuthToken,setFirstPage}) {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    // token: state.token
+  };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    storeAuthToken: (authToken) => dispatch({ type: 'STORE_TOKEN', payload: authToken })
-  }
+const mapDispatchToProps ={
+  loginUser
 };
 
 var LoginFormContainer = connect(mapStateToProps, mapDispatchToProps)(LoginForm);

@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import {Label, Button, FormGroup, Input} from 'reactstrap';
 import { connect } from 'react-redux';
 import "../App.css";
-import {restClient } from "../../api/rest_interceptor";
+import {restClient } from "../../api/restInterceptor";
 
 class Events extends React.Component {
     constructor(props) {

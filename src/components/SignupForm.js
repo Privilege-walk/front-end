@@ -14,7 +14,7 @@ import {
     Row,
     Col
 } from 'reactstrap';
-import { restClient } from '../api/rest_interceptor';
+import { restClient } from '../api/restInterceptor';
 
 
 
