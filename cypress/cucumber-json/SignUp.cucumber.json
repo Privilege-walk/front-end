@@ -1,0 +1,103 @@
+[
+  {
+    "description": "  I want to sign-up for using the app",
+    "keyword": "Feature",
+    "name": "SignUp",
+    "line": 1,
+    "id": "signup",
+    "tags": [],
+    "uri": "SignUp.feature",
+    "elements": [
+      {
+        "id": "signup;successful-sign-up",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Successful Sign-up",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I open the signup page",
+            "result": {
+              "status": "passed",
+              "duration": 2008000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I Enter a valid First Name, Last Name, Username, Email, and Password",
+            "result": {
+              "status": "passed",
+              "duration": 3231000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I click on the \"Sign Up\" button",
+            "result": {
+              "status": "failed",
+              "duration": 278000000,
+              "error_message": "Error: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Network Error\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n    at createError (webpack://react-app/./node_modules/axios/lib/core/createError.js?:16:15)\n    at XMLHttpRequest.handleError (webpack://react-app/./node_modules/axios/lib/adapters/xhr.js?:117:14)\n    at XMLHttpRequest.eval (eval at makeContentWindowListener (http://localhost:8080/__cypress/runner/cypress_runner.js:176770:10), <anonymous>:4:29)\nFrom previous event:\n    at CommandQueue.run (http://localhost:8080/__cypress/runner/cypress_runner.js:186601:21)\n    at CommandQueue.run (http://localhost:8080/__cypress/runner/cypress_runner.js:172258:15)\n    at $Cy.cy.<computed> [as then] (http://localhost:8080/__cypress/runner/cypress_runner.js:173256:18)\n    at __stackReplacementMarker (http://localhost:8080/__cypress/runner/cypress_runner.js:172741:13)\n    at Context.runnable.fn (http://localhost:8080/__cypress/runner/cypress_runner.js:173474:19)\n    at callFn (http://localhost:8080/__cypress/runner/cypress_runner.js:125619:21)\n    at Test.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:125606:7)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180375:30\nFrom previous event:\n    at Object.onRunnableRun (http://localhost:8080/__cypress/runner/cypress_runner.js:180360:19)\n    at $Cypress.action (http://localhost:8080/__cypress/runner/cypress_runner.js:169744:28)\n    at Test.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:178039:13)\n    at Runner.../driver/node_modules/mocha/lib/runner.js.Runner.runTest (http://localhost:8080/__cypress/runner/cypress_runner.js:126278:10)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126404:12\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126187:14)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126197:7\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126099:14)\n    at Hook.<anonymous> (http://localhost:8080/__cypress/runner/cypress_runner.js:126160:7)\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:180273:24)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180302:13\nFrom previous event:\n    at onNext (http://localhost:8080/__cypress/runner/cypress_runner.js:180299:59)\n    at done (http://localhost:8080/__cypress/runner/cypress_runner.js:125559:5)\n    at callFn (http://localhost:8080/__cypress/runner/cypress_runner.js:125642:7)\n    at Hook.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:125606:7)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180375:30\nFrom previous event:\n    at Object.onRunnableRun (http://localhost:8080/__cypress/runner/cypress_runner.js:180360:19)\n    at $Cypress.action (http://localhost:8080/__cypress/runner/cypress_runner.js:169744:28)\n    at Hook.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:178039:13)\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126121:10)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126165:5\n    at timeslice (http://localhost:8080/__cypress/runner/cypress_runner.js:120091:27)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I should be taken to the \"login\" page for me to be able to login",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "signup;invalid-email-entry",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Invalid email entry",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I open the signup page",
+            "result": {
+              "status": "passed",
+              "duration": 543000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I enter an invalid email such as \"howdy.com\"",
+            "result": {
+              "status": "passed",
+              "duration": 607000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "I should be notified that I have entered an \"Invalid email address\"",
+            "result": {
+              "status": "passed",
+              "duration": 22000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
