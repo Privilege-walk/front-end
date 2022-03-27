@@ -3,11 +3,13 @@ Given('I open the signup page', () => {
 })
 
 When('I Enter a valid First Name, Last Name, Username, Email, and Password', () => {
+    var random_stuff = btoa(Math.random().toString()).substr(10, 5);
+
     cy.get('input[id="firstName"]').type("James");
     cy.get('input[id="lastName"]').type("Bond");
-    cy.get('input[id="username"]').type("mi6007");
+    cy.get('input[id="username"]').type(random_stuff);
     cy.get('input[id="password"]').type("queens_secret_700");
-    cy.get('input[id="email"]').type("jamesbond@example.com");
+    cy.get('input[id="email"]').type(random_stuff + "@example.com");
 })
 
 And('I click on the {string} button', (button_text) => {
