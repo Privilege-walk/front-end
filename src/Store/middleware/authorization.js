@@ -25,19 +25,18 @@ const loginUser = async (payload) => {
         } 
         payload = { ...payload, token}
     });
-    console.log("login payload", password);
     return payload;
      
 }
 
 const authenticationMiddleware = storeAPI => next => async action => {
-    console.log("authenticationMiddleware", action);
     switch(action.type){
         case VERIFY_TOKEN:
             action.payload = await verifyToken();
             break;
         case LOGIN_USER:
             action.payload = await loginUser(action.payload);
+            break;
     }
     return next(action);
 }
