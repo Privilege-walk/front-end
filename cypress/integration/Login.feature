@@ -6,7 +6,7 @@ Feature: Login
         Given I open login page
         When I type in username and password
         And I click on Login button
-        Then I should see the welcome text
+        Then I should see the events page
 
     Scenario: App login with wrong username
         Given I open login page

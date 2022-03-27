@@ -6,12 +6,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
 import { loginUser } from "../Store/actions";
 
-function LoginForm({token, loginUser,setFirstPage}) {
+function LoginForm({token, loginUser}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
+  
 
   function validateForm() {
     return username.length > 0 && password.length > 0;
@@ -19,6 +20,7 @@ function LoginForm({token, loginUser,setFirstPage}) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    localStorage.removeItem('token');
     const action = await loginUser({username, password});
     if (action.payload.token){
       setLogin(true);
@@ -29,7 +31,7 @@ function LoginForm({token, loginUser,setFirstPage}) {
   }
 
   function onSignUp() {
-    setFirstPage('signup');
+    navigate("/signup");
   }
 
   return (
@@ -72,7 +74,7 @@ function LoginForm({token, loginUser,setFirstPage}) {
       </Form>
       {
           token &&
-          <Navigate to="/events" />
+          <Navigate to="/" />
       }
     </div>
   );

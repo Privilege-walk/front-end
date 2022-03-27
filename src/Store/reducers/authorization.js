@@ -2,7 +2,6 @@ import { LOGIN_USER, VERIFY_TOKEN, LOG_OUT_USER } from "../actions/actionTypes";
 
 const tokenReducer = (state='', action) => {
     let currentState = state;
-    console.log("tokenReducer", action);
     switch(action.type){
         case LOGIN_USER:
             return action.payload.token; 

@@ -30,6 +30,10 @@ class App extends React.Component {
                     <Route path="/events" element={<Events />} />
                     <Route path="/questions" element={<Questions />} />
                 </Route>
+                <Route
+                    path="*"
+                    element={<Navigate to="/events" replace />}
+                />
                 
             </Routes>
         );

@@ -1,5 +1,5 @@
 import React from "react";
-import {Label, FormGroup, Row, Col, Container} from 'reactstrap';
+import { Row, Container} from 'reactstrap';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,18 +8,18 @@ import TableRow from '@mui/material/TableRow';
 import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import TableHead from '@mui/material/TableHead';
+import FormHelperText from '@mui/material/FormHelperText';
 
-import Box, { BoxProps } from '@mui/material/Box';
+import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
 import { connect } from 'react-redux';
 import "../App.css";
-import {restClient } from "../../api/restInterceptor";
 import EventListItem from "./EventListItem";
+import { fetchEvents, createEvent } from '../../Store/actions';
 
 
 class Events extends React.Component {
@@ -54,45 +54,37 @@ class Events extends React.Component {
         this.setState({page: newPage});
     };
     
-    fetchAllEvents = () => {
-        restClient.get(`/host/events/all/`).then(async res => {
-            console.log(res);
-            if (res.data && res.data.hasOwnProperty('events')) {
-                this.changeEventsList(res.data.events.reverse());
-            } else {
-                this.setErrMsg("Unable to display the events list!");
-            }
-        });
+    fetchAllEvents = async () => {
+        const action = await this.props.fetchEvents();
+        if (action.payload.error){
+            this.setErrMsg("Unable to display the events list!");
+        }else{
+            this.changeEventsList(action.payload.events);
+        }
     }
 
     handleSubmit = async (event) => {
-        console.log(event)
-        await restClient.post(
-            `/host/events/create/`, 
-            { name: this.state.newEventName }
-        ).then(async res => {
-            if (res.data && res.data.status === 'created') {
-                this.fetchAllEvents();
-                this.setState({newEventName: ""});
-            } else {
-                this.setErrMsg("Unable to create the event!");
-            }
-        });
+        const action = await this.props.createEvent({ newEventName: this.state.newEventName});
+        if (action.payload.status == "created"){
+            this.fetchAllEvents();
+            this.setState({newEventName: ""});
+        }else{
+            this.setErrMsg("Unable to create the event!");
+        }
     }
 
     render() {
         return (
-            <Container className="mx-2">
+            <Container id="eventsPageId" className="mx-2">
                 <Row>
                 <h1 className="event">Events</h1>
             
                 <Paper 
                     className="mb-3 align-items-center" 
                     variant="outlined" 
-                    elevation={0} 
                     sx={{ p: '2px 4px',  display: 'flex',  flexGrow: 1, alignItems: 'center'}}
                 >
-                    <FormControl fullWidth sx={{ m: 1 }}>
+                    <FormControl error={this.state.errMsg.length > 0} fullWidth sx={{ m: 1 }}>
                         <InputLabel htmlFor="new-event-name">New Event Name</InputLabel>
                         <OutlinedInput
                             id="new-event-name"
@@ -102,6 +94,7 @@ class Events extends React.Component {
                             value={this.state.newEventName}
                             onChange={(e) => this.changeNewEventName(e.target.value)}
                         />
+                        <FormHelperText data-testid="event-error-text">{this.state.errMsg}</FormHelperText>
                     </FormControl>
                     <Box>
                         <Button 
@@ -165,5 +158,10 @@ const mapStateToProps = state => {
     };
 };
 
-var EventsContainer = connect(mapStateToProps)(Events);
+const mapDispatchToProps = {
+    fetchEvents,
+    createEvent
+  };
+
+var EventsContainer = connect(mapStateToProps, mapDispatchToProps)(Events);
 export default EventsContainer;

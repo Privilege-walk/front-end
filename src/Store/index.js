@@ -7,7 +7,7 @@ import {
     finishedAuthCheckReducer
 } from './reducers';
 
-import { authenticationMiddleware } from './middleware';
+import { authenticationMiddleware, eventsMiddleware } from './middleware';
 
 const store = configureStore({
     reducer:{
@@ -15,7 +15,7 @@ const store = configureStore({
         finishedAuthCheck: finishedAuthCheckReducer,
     },
     preloadedState : {},
-    middleware: [thunkMiddleware, authenticationMiddleware]
+    middleware: [thunkMiddleware, authenticationMiddleware, eventsMiddleware]
 })
 
 
