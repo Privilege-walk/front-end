@@ -4,7 +4,6 @@ import { restClient } from "../../api/restInterceptor";
 
 const fetchAllEvents = async (payload) => {
     await restClient.get(`/host/events/all/`).then( res => {
-        console.log(res);
         if (res.data && res.data.hasOwnProperty('events')) {
             payload = {...payload, events: res.data.events.reverse()};
         } else {

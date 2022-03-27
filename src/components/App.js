@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 
 import { connect } from 'react-redux';
@@ -26,6 +27,10 @@ class App extends React.Component {
                 <Route  element={<ProtectedRoute />}>
                     <Route path="/events" element={<Events />} />
                 </Route>
+                <Route
+                    path="*"
+                    element={<Navigate to="/events" replace />}
+                />
                 
             </Routes>
         );

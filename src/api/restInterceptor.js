@@ -5,9 +5,9 @@ const restClient = axios.create({
     baseURL: getBaseUrl(),
 });
 
-let token = localStorage.getItem('token')? localStorage.getItem('token') : '';
 
 restClient.interceptors.request.use(function (config) {
+    let token = localStorage.getItem('token')? localStorage.getItem('token') : '';
     config.headers = { 
       ...config.headers, 
       'content-type': 'application/json'
@@ -19,7 +19,7 @@ restClient.interceptors.request.use(function (config) {
     };
     return config;
     }, function (error) {
-    return Promise.reject(error);
+      return Promise.reject(error);
     }
 );
 

@@ -18,7 +18,6 @@ const loginUser = async (payload) => {
         { username, password }
     ).then(async res => {
         let token = "";
-        console.log(res);
         if (res.data.status === true) {
             token = res.data.token;  
             localStorage.setItem("token", token); 

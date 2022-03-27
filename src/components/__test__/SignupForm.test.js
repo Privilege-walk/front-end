@@ -1,14 +1,3 @@
-// Validate input data before sending. if invalid post request should not be sent.
-// username: field cannot be empty.
-// password: field cannot be empty. has to be more than 8 characters
-// first_name: field cannot be empty.
-// Last name: field cannot be empty.
-// Email: field cannot be empty, has to have @ sign.
-
-
-// successful creation. should show some output on the frontend.
-// username exists
-// Email exists.
 import React from "react";
 import { render, fireEvent, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';

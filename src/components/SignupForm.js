@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import axios from 'axios';
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import * as yup from 'yup';
 
 import Form from "react-bootstrap/Form";
@@ -28,9 +28,10 @@ const schema = yup.object().shape({
 });
 
 
-export default function SignUpForm({onSubmit,setFirstPage}) {
-    const [login, setLogin] = useState(false);
+export default function SignUpForm({onSubmit}) {
     const [errMsg, setErrMsg] = useState("");
+    const navigate = useNavigate();
+    
 
     function submitSignupForm(formData){
         const data = {
@@ -42,8 +43,8 @@ export default function SignUpForm({onSubmit,setFirstPage}) {
         };
         restClient.post("/auth/signup/", data).then(async res => {
             if(res.data.created == "success"){
-                setLogin(true);
-                setFirstPage('login');
+                localStorage.removeItem('token');
+                navigate("/login");
             }else{
                 setErrMsg(res.data.created);
             }
@@ -62,7 +63,7 @@ export default function SignUpForm({onSubmit,setFirstPage}) {
     }
 
     function onLogin() {
-        setFirstPage('login');
+        navigate("/login");
     }
 
     return (
@@ -75,8 +76,7 @@ export default function SignUpForm({onSubmit,setFirstPage}) {
                 lastName: '',
                 username: '',
                 password: '',
-                email: '',
-              
+                email: '',         
               }}
         >
             {({
@@ -213,11 +213,6 @@ export default function SignUpForm({onSubmit,setFirstPage}) {
                 </Form>
             )}
         </Formik>
-
-        {
-            login &&
-            <Navigate to="/" />
-        }
         </div>
     )
 }
