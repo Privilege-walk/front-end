@@ -89,7 +89,7 @@ class Events extends React.Component {
                 <Paper 
                     className="mb-3 align-items-center" 
                     variant="outlined" 
-                    elevation={3} 
+                    elevation={0} 
                     sx={{ p: '2px 4px',  display: 'flex',  flexGrow: 1, alignItems: 'center'}}
                 >
                     <FormControl fullWidth sx={{ m: 1 }}>
@@ -138,7 +138,7 @@ class Events extends React.Component {
                             ).map( (item, _) => (
                                 <TableRow key={item.id}>
                                     <TableCell>
-                                    <EventListItem key={item.id} name={item.name} status={item.status} />
+                                        <EventListItem key={item.id} id={item.id} name={item.name} status={item.status} />
                                     </TableCell>
                                 </TableRow>)
                         ))
