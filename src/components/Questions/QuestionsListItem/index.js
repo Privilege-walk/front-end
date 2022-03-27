@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
  import Card from '@mui/material/Card';
  import CardContent from '@mui/material/CardContent';
  import Typography from '@mui/material/Typography';
@@ -6,13 +6,14 @@ import React from "react";
 
 
 export default function QuestionsListItem({ description, choices }) {
+    const [answerChoices, changeChoices] = useState([...choices].reverse())
     return (
         <Card className="">
             <CardContent>
             <Typography>{description}</Typography>
             </CardContent>
             {
-                choices.reverse().map( (item) => (
+                answerChoices.map( (item) => (
                     <OptionsListItem 
                         key={item.id}
                         type = 'view'

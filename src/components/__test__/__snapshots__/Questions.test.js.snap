@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Question page without crashing 1`] = `
+<DocumentFragment>
+  <div
+    class="mx-2 container"
+  >
+    <div
+      class="row"
+    >
+      <h1
+        class="event"
+      >
+        New Event
+      </h1>
+      <div
+        class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded mb-3 align-items-center css-101q0pl-MuiPaper-root"
+      >
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth css-1w4vsez-MuiFormControl-root"
+        >
+          <label
+            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            for="new-question-name"
+          >
+            Add New Question
+          </label>
+          <div
+            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            variant="filled"
+          >
+            <input
+              aria-invalid="false"
+              autocomplete="off"
+              class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              id="new-question-name"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-1ftyaf0"
+              >
+                <span>
+                  Add New Question
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+        <div
+          style="width: 100%;"
+        >
+          <div
+            style="display: flex; flex-grow: 1; align-items: center;"
+          >
+            <div
+              class="MuiFormControl-root css-104sb8r-MuiFormControl-root"
+            >
+              <input
+                class="form-control"
+                id="new-option-desc"
+                placeholder="Option Description"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              class="MuiFormControl-root css-3t6boo-MuiFormControl-root"
+            >
+              <input
+                class="form-control"
+                id="new-option-points"
+                placeholder="Option Points"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              class="MuiBox-root css-1ldu1i8"
+            >
+              <button
+                class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root Mui-disabled ml-2 css-sghohy-MuiButtonBase-root-MuiButton-root"
+                disabled=""
+                tabindex="-1"
+                type="submit"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-k1clu9"
+          >
+            <button
+              class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root Mui-disabled ml-2 css-sghohy-MuiButtonBase-root-MuiButton-root"
+              disabled=""
+              tabindex="-1"
+              type="submit"
+            >
+              Create Question
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-11xur9t-MuiPaper-root-MuiTableContainer-root"
+    >
+      <table
+        aria-label="simple table"
+        class="MuiTable-root css-quj9j6-MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+              scope="col"
+            >
+              <h4>
+                Questions
+              </h4>
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+            style="color: gray; margin-left: 10px;"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+            >
+              <i>
+                No questions to show.
+              </i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</DocumentFragment>
+`;
