@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import axios from 'axios';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { connect } from 'react-redux';
 import * as yup from 'yup';
 
 import Form from "react-bootstrap/Form";
@@ -11,12 +11,9 @@ import {
     FormGroup, 
     FormFeedback,
     Input,
-    Row,
-    Col
+    Row
 } from 'reactstrap';
-import { restClient } from '../api/restInterceptor';
-
-
+import { signupUser } from "../Store/actions";
 
 
 const schema = yup.object().shape({
@@ -28,12 +25,12 @@ const schema = yup.object().shape({
 });
 
 
-export default function SignUpForm({onSubmit}) {
+function SignUpForm({signupUser}) {
     const [errMsg, setErrMsg] = useState("");
     const navigate = useNavigate();
     
-
-    function submitSignupForm(formData){
+    async function handleSubmit(formData){
+        setErrMsg("");
         const data = {
             "first_name": formData["firstName"],
             "last_name": formData["lastName"],
@@ -41,23 +38,12 @@ export default function SignUpForm({onSubmit}) {
             "password": formData["password"],
             "email": formData["email"]
         };
-        restClient.post("/auth/signup/", data).then(async res => {
-            if(res.data.created == "success"){
-                localStorage.removeItem('token');
-                navigate("/login");
-            }else{
-                setErrMsg(res.data.created);
-            }
-        })
-    }
-
-    function handleSubmit(formData){
-        setErrMsg("");
-        
-        if(onSubmit){
-            onSubmit(formData);
+        const action = await signupUser(data);
+        if(action.payload.created == "success"){
+            localStorage.removeItem('token');
+            navigate("/login");
         }else{
-            submitSignupForm(formData);
+            setErrMsg(action.payload.created);
         }
         
     }
@@ -216,3 +202,15 @@ export default function SignUpForm({onSubmit}) {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+    };
+  };
+  
+  const mapDispatchToProps ={
+    signupUser
+  };
+  
+  var SignUpFormContainer = connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+  export default SignUpFormContainer;

@@ -1,7 +1,10 @@
 import React from "react";
 import { render, fireEvent, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { act } from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import SignupForm from '../SignupForm';
 
 const mockedUsedNavigate = jest.fn();
@@ -10,11 +13,24 @@ jest.mock("react-router-dom", () => ({
     useNavigate: () => mockedUsedNavigate,
 }))
 
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
+const mockSignUpUser = jest.fn();
+jest.mock('../../Store/actions', () => ({
+    signupUser: () => mockSignUpUser
+}));
+
 const setup = () => {
     let utils;
-    const handleSubmit = jest.fn();
+    const store = mockStore({
+        signupUser: mockSignUpUser
+    });
     act (() => {
-        utils = render(<SignupForm onSubmit={handleSubmit} />);
+        utils = render(
+            <Provider store={store}>
+                <SignupForm />
+            </Provider>
+        );
     }); 
     let data = {
         "username": { "value": "user1", "label": "Username" },
@@ -34,7 +50,6 @@ const setup = () => {
         inputs,
         signupBtn,
         errDiv,
-        handleSubmit,
         ...utils
     }
 }
@@ -50,7 +65,7 @@ test('renders without crashing',  ()=> {
 
 test('Successful sign up', async () => {
     const utils = setup(); 
-    const { inputs, data, signupBtn, errDiv, handleSubmit } = utils;
+    const { inputs, data, signupBtn, errDiv } = utils;
     let formData = {};
 
     for(let key of Object.keys(inputs)){
@@ -58,23 +73,23 @@ test('Successful sign up', async () => {
         fireEvent.change(inputs[key], {target: {value: data[key]["value"]}});
     }
 
+    mockSignUpUser.mockReturnValueOnce({payload: {created: "success"}})
     expect(errDiv).toHaveTextContent("");
     await act(async () => {   
         await fireEvent.click(signupBtn);
     });
     expect(errDiv).toHaveTextContent("");
-    expect(handleSubmit).toHaveBeenCalledWith(formData);
+    expect(mockSignUpUser).toHaveBeenCalled();
 });
 
 test('Unsuccessful sign up', async () => {
     const utils = setup(); 
-    const {signupBtn, errDiv, handleSubmit } = utils;
+    const {signupBtn, errDiv } = utils;
 
     expect(errDiv).toHaveTextContent("");
     await act(async () => {   
         await fireEvent.click(signupBtn);
     });
     expect(errDiv).toHaveTextContent("");
-    expect(handleSubmit).not.toHaveBeenCalled();
 });
 

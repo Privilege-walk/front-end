@@ -1,4 +1,4 @@
-import { LOGIN_USER, VERIFY_TOKEN } from "../actions/actionTypes";
+import { LOGIN_USER, SIGNUP_USER, VERIFY_TOKEN } from "../actions/actionTypes";
 import { restClient } from "../../api/restInterceptor";
 
 
@@ -10,6 +10,14 @@ const verifyToken = () => {
         return false;
     }
 }
+
+const signupUser = async (payload) => {
+    await restClient.post("/auth/signup/", payload).then(async res => {
+        payload = { ...payload, created: res.data.created};
+    }) 
+    return payload;
+}
+
 
 const loginUser = async (payload) => {
     const {username, password} = payload;
@@ -32,6 +40,9 @@ const authenticationMiddleware = storeAPI => next => async action => {
     switch(action.type){
         case VERIFY_TOKEN:
             action.payload = await verifyToken();
+            break;
+        case SIGNUP_USER:
+            action.payload = await signupUser(action.payload);
             break;
         case LOGIN_USER:
             action.payload = await loginUser(action.payload);
