@@ -4,7 +4,11 @@ import { act } from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
 import SignupForm from '../SignupForm';
 
-jest.mock("react-router-dom", () => ({Navigate: () => "Navigate"}))
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+    Navigate: () => "Navigate",
+    useNavigate: () => mockedUsedNavigate,
+}))
 
 const setup = () => {
     let utils;

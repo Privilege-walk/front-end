@@ -8,8 +8,8 @@ When('I type in username and password', () => {
 And('I click on Login button', () => {
     cy.get('button[type="submit"]').contains('Login').should('be.visible').click()
 })
-Then('I should see the welcome text', () => {
-    cy.get('.welcome').should('exist');
+Then('I should see the events page', () => {
+    cy.get('div[id="eventsPageId"]').should('exist');
 })
 
 When('I type in username and wrong password', () => {

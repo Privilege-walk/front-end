@@ -75,7 +75,7 @@ class Events extends React.Component {
 
     render() {
         return (
-            <Container className="mx-2">
+            <Container id="eventsPageId" className="mx-2">
                 <Row>
                 <h1 className="event">Events</h1>
             

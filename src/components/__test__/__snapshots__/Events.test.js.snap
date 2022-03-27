@@ -4,6 +4,7 @@ exports[`fetch events list of items 1`] = `
 <DocumentFragment>
   <div
     class="mx-2 container"
+    id="eventsPageId"
   >
     <div
       class="row"
@@ -181,6 +182,7 @@ exports[`renders without crashing: empty list 1`] = `
 <DocumentFragment>
   <div
     class="mx-2 container"
+    id="eventsPageId"
   >
     <div
       class="row"

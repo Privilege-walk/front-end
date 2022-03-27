@@ -1,0 +1,63 @@
+[
+  {
+    "description": "    I want to create and see all my events",
+    "keyword": "Feature",
+    "name": "Events",
+    "line": 1,
+    "id": "events",
+    "tags": [],
+    "uri": "Events.feature",
+    "elements": [
+      {
+        "id": "events;create-new-event-successful",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Create new event successful",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I open events page",
+            "result": {
+              "status": "passed",
+              "duration": 1685000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I type a new event name",
+            "result": {
+              "status": "passed",
+              "duration": 714000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I click on create event button",
+            "result": {
+              "status": "passed",
+              "duration": 160000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I should see the new event created",
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

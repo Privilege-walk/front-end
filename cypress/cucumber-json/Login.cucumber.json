@@ -23,7 +23,7 @@
             "name": "I open login page",
             "result": {
               "status": "passed",
-              "duration": 1767000000
+              "duration": 449000000
             }
           },
           {
@@ -32,9 +32,8 @@
             "line": 7,
             "name": "I type in username and password",
             "result": {
-              "status": "failed",
-              "duration": 4245000000,
-              "error_message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[id=\"username-input\"]`, but never found it.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:41:6)\n    at Context.resolveAndRunStepDefinition (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:10986:29)\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:10307:35)"
+              "status": "passed",
+              "duration": 745000000
             }
           },
           {
@@ -43,16 +42,18 @@
             "line": 8,
             "name": "I click on Login button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 103000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "I should see the welcome text",
+            "name": "I should see the events page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 635000000
             }
           }
         ]
@@ -72,7 +73,7 @@
             "name": "I open login page",
             "result": {
               "status": "passed",
-              "duration": 650000000
+              "duration": 240000000
             }
           },
           {
@@ -81,8 +82,8 @@
             "line": 13,
             "name": "I type in wrong username and password",
             "result": {
-              "status": "failed",
-              "error_message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[id=\"username-input\"]`, but never found it.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:55:6)\n    at Context.resolveAndRunStepDefinition (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:10986:29)\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:10307:35)"
+              "status": "passed",
+              "duration": 678000000
             }
           },
           {
@@ -91,7 +92,8 @@
             "line": 14,
             "name": "I click on Login button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 93000000
             }
           },
           {
@@ -100,7 +102,8 @@
             "line": 15,
             "name": "I should see the error message",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 5000000
             }
           }
         ]
@@ -120,7 +123,7 @@
             "name": "I open login page",
             "result": {
               "status": "passed",
-              "duration": 309000000
+              "duration": 226000000
             }
           },
           {
@@ -129,8 +132,8 @@
             "line": 19,
             "name": "I type in username and wrong password",
             "result": {
-              "status": "failed",
-              "error_message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[id=\"username-input\"]`, but never found it.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:51:6)\n    at Context.resolveAndRunStepDefinition (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:10986:29)\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/Login.feature:10307:35)"
+              "status": "passed",
+              "duration": 702000000
             }
           },
           {
@@ -139,7 +142,8 @@
             "line": 20,
             "name": "I click on Login button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 97000000
             }
           },
           {
@@ -148,7 +152,8 @@
             "line": 21,
             "name": "I should see the error message",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 172000000
             }
           }
         ]
