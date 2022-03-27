@@ -1,0 +1,143 @@
+[
+  {
+    "description": "    I want to login to the app",
+    "keyword": "Feature",
+    "name": "Questions",
+    "line": 1,
+    "id": "questions",
+    "tags": [],
+    "uri": "Questions.feature",
+    "elements": [
+      {
+        "id": "questions;create-new-question-successfully",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Create new question successfully",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I open questions page",
+            "result": {
+              "status": "passed",
+              "duration": 2760000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I enter a question and options",
+            "result": {
+              "status": "passed",
+              "duration": 890000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I click on create question",
+            "result": {
+              "status": "passed",
+              "duration": 132000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I should see the question",
+            "result": {
+              "status": "passed",
+              "duration": 77000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "questions;validate-create-questions-button",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Validate create questions button",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I open questions page",
+            "result": {
+              "status": "passed",
+              "duration": 2720000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I enter a blank question",
+            "result": {
+              "status": "passed",
+              "duration": 244000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "I should not be able to create question",
+            "result": {
+              "status": "passed",
+              "duration": 23000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "questions;validate-add-options-button",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Validate add options button",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "I open questions page",
+            "result": {
+              "status": "passed",
+              "duration": 2599000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I enter a question and no option",
+            "result": {
+              "status": "passed",
+              "duration": 581000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I should not be able to create option",
+            "result": {
+              "status": "passed",
+              "duration": 16000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

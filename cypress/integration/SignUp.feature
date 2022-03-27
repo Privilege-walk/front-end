@@ -12,3 +12,15 @@ Feature: SignUp
     Given I open the signup page
     When I enter an invalid email such as "howdy.com"
     Then I should be notified that I have entered an "Invalid email address"
+
+  Scenario: Username already exists
+    Given I am an existing user
+    When I try to use the same "username" to sign-up again
+    And I click on the "Sign Up" button
+    Then I should receive an error message saying "username exists"
+
+  Scenario: Email already exists
+    Given I am an existing user
+    When I try to use the same "email" to sign-up again
+    And I click on the "Sign Up" button
+    Then I should receive an error message saying "email exists"

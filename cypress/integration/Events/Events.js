@@ -15,5 +15,5 @@ And('I click on create event button', () => {
 })
 
 Then('I should see the new event created', () => {
-
+    cy.get('table').contains('p','Christmas eve event').should('be.visible');
 })
