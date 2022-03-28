@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot --config ./config/webpack.config.dev.js",
+    "start:prod": "webpack-dev-server --mode development --open --hot --config ./config/webpack.config.prod.js",
     "build": "webpack --mode production --config ./config/webpack.config.prod.js",
     "test": "jest",
     "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
