@@ -41,6 +41,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
             <FormControl sx={{ m: 1, width: '350px' }}>
                 <Input
                     id={"new-option-desc-"+id}
+                    data-testid={"new-option-desc-"+id}
                     placeholder="Option Description"
                     value={optionDesc}
                     onChange={(e) => setOptionDesc(e.target.value)}
@@ -50,6 +51,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
             <FormControl sx={{ m: 1, width: '125px' }}>
                 <Input
                     id={"new-option-points-"+id}
+                    data-testid={"new-option-points-"+id}
                     placeholder="Option Points"
                     value={optionPoints}
                     onChange={(e) => setOptionPoints(e.target.value)}
@@ -61,6 +63,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
                 (<Box sx={{p: '0px 0px 0px 8px'}}>
                     <Button 
                         id={"add-"+id}
+                        data-testid={"add-"+id}
                         variant="contained"
                         type="submit"
                         className="ml-2"
@@ -76,6 +79,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
                 (<Box sx={{p: '0px 0px 0px 8px'}}>
                     <Button 
                         id={"edit-"+id}
+                        data-testid={"edit-"+id}
                         variant="contained"
                         type="submit"
                         className="ml-2"
@@ -90,6 +94,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
                 (<Box sx={{p: '0px 0px 0px 8px'}}>
                     <Button 
                         id={"delete-"+id}
+                        data-testid={"delete-"+id}
                         variant="contained"
                         type="submit"
                         className="ml-2"
