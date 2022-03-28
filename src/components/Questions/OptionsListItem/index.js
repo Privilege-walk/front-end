@@ -40,7 +40,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
         <div style={{p: '2px 4px', display: 'flex', flexGrow: 1, alignItems: 'center'}}>
             <FormControl sx={{ m: 1, width: '350px' }}>
                 <Input
-                    id="new-option-desc"
+                    id={"new-option-desc-"+id}
                     placeholder="Option Description"
                     value={optionDesc}
                     onChange={(e) => setOptionDesc(e.target.value)}
@@ -49,7 +49,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
             </FormControl>
             <FormControl sx={{ m: 1, width: '125px' }}>
                 <Input
-                    id="new-option-points"
+                    id={"new-option-points-"+id}
                     placeholder="Option Points"
                     value={optionPoints}
                     onChange={(e) => setOptionPoints(e.target.value)}
@@ -60,6 +60,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
                 (type === 'new' || (type === 'edit' && !isDisabled)) && 
                 (<Box sx={{p: '0px 0px 0px 8px'}}>
                     <Button 
+                        id={"add-"+id}
                         variant="contained"
                         type="submit"
                         className="ml-2"
@@ -74,6 +75,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
                 type === 'edit' && isDisabled && 
                 (<Box sx={{p: '0px 0px 0px 8px'}}>
                     <Button 
+                        id={"edit-"+id}
                         variant="contained"
                         type="submit"
                         className="ml-2"
@@ -87,6 +89,7 @@ export default function OptionsListItem({ id, type, description, value, addOptio
                 type === 'edit' && isDisabled && 
                 (<Box sx={{p: '0px 0px 0px 8px'}}>
                     <Button 
+                        id={"delete-"+id}
                         variant="contained"
                         type="submit"
                         className="ml-2"

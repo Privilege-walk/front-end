@@ -23,7 +23,7 @@
             "name": "I open the signup page",
             "result": {
               "status": "passed",
-              "duration": 293000000
+              "duration": 29243000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I Enter a valid First Name, Last Name, Username, Email, and Password",
             "result": {
               "status": "passed",
-              "duration": 1521000000
+              "duration": 1532000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I click on the \"Sign Up\" button",
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 98000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "I should be taken to the \"login\" page for me to be able to login",
             "result": {
               "status": "passed",
-              "duration": 51000000
+              "duration": 186000000
             }
           }
         ]
@@ -73,7 +73,7 @@
             "name": "I open the signup page",
             "result": {
               "status": "passed",
-              "duration": 257000000
+              "duration": 106000000
             }
           },
           {
@@ -83,7 +83,7 @@
             "name": "I enter an invalid email such as \"howdy.com\"",
             "result": {
               "status": "passed",
-              "duration": 352000000
+              "duration": 274000000
             }
           },
           {
@@ -93,7 +93,7 @@
             "name": "I should be notified that I have entered an \"Invalid email address\"",
             "result": {
               "status": "passed",
-              "duration": 18000000
+              "duration": 13000000
             }
           }
         ]
@@ -113,7 +113,7 @@
             "name": "I am an existing user",
             "result": {
               "status": "passed",
-              "duration": 969000000
+              "duration": 689000000
             }
           },
           {
@@ -123,7 +123,7 @@
             "name": "I try to use the same \"username\" to sign-up again",
             "result": {
               "status": "passed",
-              "duration": 687000000
+              "duration": 652000000
             }
           },
           {
@@ -133,7 +133,7 @@
             "name": "I click on the \"Sign Up\" button",
             "result": {
               "status": "passed",
-              "duration": 99000000
+              "duration": 107000000
             }
           },
           {
@@ -142,8 +142,8 @@
             "line": 20,
             "name": "I should receive an error message saying \"username exists\"",
             "result": {
-              "status": "passed",
-              "duration": 31000000
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'username exists' within the element: <div.mb-3.errMsg.justify-content-center.row> but never did.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/SignUp.feature:57:74)\n    at Context.resolveAndRunStepDefinition (http://localhost:8080/__cypress/tests?p=cypress/integration/SignUp.feature:11015:29)\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/SignUp.feature:10336:35)"
             }
           }
         ]
@@ -163,7 +163,7 @@
             "name": "I am an existing user",
             "result": {
               "status": "passed",
-              "duration": 936000000
+              "duration": 805000000
             }
           },
           {
@@ -173,7 +173,7 @@
             "name": "I try to use the same \"email\" to sign-up again",
             "result": {
               "status": "passed",
-              "duration": 704000000
+              "duration": 545000000
             }
           },
           {
@@ -183,7 +183,7 @@
             "name": "I click on the \"Sign Up\" button",
             "result": {
               "status": "passed",
-              "duration": 101000000
+              "duration": 93000000
             }
           },
           {

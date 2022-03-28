@@ -144,7 +144,7 @@ function Questions() {
                                 type="submit"
                                 className="ml-2"
                                 onClick={submitNewQuestion}
-                                disabled={(newQuestion === "" || newQuestion.trim() === "") || optionsList.length == 0}
+                                disabled={(newQuestion === "" || newQuestion.trim() === "") || optionsList.length < 2}
                             >
                                 Create Question
                             </Button>  
