@@ -15,12 +15,12 @@ import TableHead from '@mui/material/TableHead';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import {restClient } from "../../api/restInterceptor";
 import QuestionsListItem from "./QuestionsListItem";
 import OptionsListItem from "./OptionsListItem";
+import { fetchQuestions, createQuestion } from '../../Store/actions';
 
 
-function Questions() {
+function Questions({fetchQuestions, createQuestion}) {
     const props = useLocation();
     const [questionsList, setQuestionsList] = useState([]);
     const [optionsList, setOptionsList] = useState([]);
@@ -31,15 +31,12 @@ function Questions() {
     useEffect(async () => fetchAllQuestions(), []);
 
     async function fetchAllQuestions() {
-        await restClient.get(`/host/qa/eventwise_qas/`, { params: {event_id: props.state.id} })
-        .then(async res => {
-            console.log(res);
-            if (res.data && res.data.hasOwnProperty('questions')) {
-                setQuestionsList(res.data.questions);
-            } else {
-                this.setErrMsg("Unable to display the events list!");
-            }
-        });
+        const action = await fetchQuestions({ params: {event_id: props.state.id} });
+        if (action.payload.error){
+            setErrMsg("Unable to display the questions list!");
+        }else{
+            setQuestionsList(action.payload.questions);
+        }
     }
     
     function createChoices() {
@@ -50,25 +47,20 @@ function Questions() {
     }
 
     async function submitNewQuestion(event) {
-        console.log(event)
         let requestBody = {
             "event_id": props.state.id,
             "title": newQuestion,
             "choices": createChoices()
         }
-        await restClient.post(
-            `/host/qa/create/`, 
-            requestBody
-        ).then(async res => {
-            if (res.data && res.data.status === 'created') {
-                fetchAllQuestions();
-                setNewQuestion("");
-                setOptionsList([]);
-                setNewOptionId(0);
-            } else {
-                setErrMsg("Unable to create the event!");
-            }
-        });
+        const action = await createQuestion({ requestBody });
+        if (action.payload.status == "created"){
+            fetchAllQuestions();
+            setNewQuestion(action.payload.newQuestion);
+            setOptionsList(action.payload.optionsList);
+            setNewOptionId(action.payload.newOptionId);
+        }else{
+            setErrMsg("Unable to create the question!");
+        }
     }
 
     function handleOptionAdd(option) {
@@ -144,7 +136,7 @@ function Questions() {
                                 type="submit"
                                 className="ml-2"
                                 onClick={submitNewQuestion}
-                                disabled={(newQuestion === "" || newQuestion.trim() === "") || optionsList.length == 0}
+                                disabled={(newQuestion === "" || newQuestion.trim() === "") || optionsList.length < 2}
                             >
                                 Create Question
                             </Button>  
@@ -195,5 +187,10 @@ const mapStateToProps = state => {
     };
 };
 
-var QuestionsContainer = connect(mapStateToProps)(Questions);
+const mapDispatchToProps = {
+    fetchQuestions,
+    createQuestion
+};
+
+var QuestionsContainer = connect(mapStateToProps, mapDispatchToProps)(Questions);
 export default QuestionsContainer;

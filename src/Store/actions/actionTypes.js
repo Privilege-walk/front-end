@@ -6,3 +6,6 @@ export const LOG_OUT_USER = "user/logout";
 
 export const FETCH_EVENTS = "events/fetch";
 export const CREATE_EVENT = "events/create";
+
+export const FETCH_QUESTIONS = "questions/fetch";
+export const CREATE_QUESTION = "questions/create";

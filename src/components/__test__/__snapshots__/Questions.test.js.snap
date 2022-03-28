@@ -63,7 +63,8 @@ exports[`renders Question page without crashing 1`] = `
             >
               <input
                 class="form-control"
-                id="new-option-desc"
+                data-testid="new-option-desc-0"
+                id="new-option-desc-0"
                 placeholder="Option Description"
                 type="text"
                 value=""
@@ -74,7 +75,8 @@ exports[`renders Question page without crashing 1`] = `
             >
               <input
                 class="form-control"
-                id="new-option-points"
+                data-testid="new-option-points-0"
+                id="new-option-points-0"
                 placeholder="Option Points"
                 type="text"
                 value=""
@@ -85,7 +87,9 @@ exports[`renders Question page without crashing 1`] = `
             >
               <button
                 class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root Mui-disabled ml-2 css-sghohy-MuiButtonBase-root-MuiButton-root"
+                data-testid="add-0"
                 disabled=""
+                id="add-0"
                 tabindex="-1"
                 type="submit"
               >

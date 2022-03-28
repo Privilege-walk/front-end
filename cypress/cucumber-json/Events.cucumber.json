@@ -23,7 +23,7 @@
             "name": "I open events page",
             "result": {
               "status": "passed",
-              "duration": 4344000000
+              "duration": 5041000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I type a new event name",
             "result": {
               "status": "passed",
-              "duration": 1590000000
+              "duration": 1343000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I click on create event button",
             "result": {
               "status": "passed",
-              "duration": 199000000
+              "duration": 387000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "I should see the new event created",
             "result": {
               "status": "passed",
-              "duration": 159000000
+              "duration": 258000000
             }
           }
         ]

@@ -1,6 +1,6 @@
 [
   {
-    "description": "    I want to login to the app",
+    "description": "    I want to add questions to an event",
     "keyword": "Feature",
     "name": "Questions",
     "line": 1,
@@ -23,17 +23,17 @@
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 2760000000
+              "duration": 13025000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 7,
-            "name": "I enter a question and options",
+            "name": "I enter a question \"Question-1\" and two options \"op-1\" and \"op-2\"",
             "result": {
               "status": "passed",
-              "duration": 890000000
+              "duration": 1535000000
             }
           },
           {
@@ -43,26 +43,26 @@
             "name": "I click on create question",
             "result": {
               "status": "passed",
-              "duration": 132000000
+              "duration": 144000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "I should see the question",
+            "name": "I should see the question \"Question-1\" and options \"op-1\" and \"op-2\"",
             "result": {
               "status": "passed",
-              "duration": 77000000
+              "duration": 62000000
             }
           }
         ]
       },
       {
-        "id": "questions;validate-create-questions-button",
+        "id": "questions;edit-option-successfully",
         "keyword": "Scenario",
         "line": 11,
-        "name": "Validate create questions button",
+        "name": "Edit option successfully",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -73,27 +73,177 @@
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 2720000000
+              "duration": 1974000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 13,
-            "name": "I enter a blank question",
+            "name": "I enter a question \"Question-2\" and two options \"op-3\" and \"op-4\"",
             "result": {
               "status": "passed",
-              "duration": 244000000
+              "duration": 1417000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I edit \"op-4\" option to \"op-5\"",
+            "result": {
+              "status": "passed",
+              "duration": 446000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "I click on create question",
+            "result": {
+              "status": "passed",
+              "duration": 139000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 14,
+            "line": 16,
+            "name": "I should see the question \"Question-2\" and options \"op-3\" and \"op-5\"",
+            "result": {
+              "status": "passed",
+              "duration": 117000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "questions;delete-option-successfully",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Delete option successfully",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "I open questions page",
+            "result": {
+              "status": "passed",
+              "duration": 1943000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I enter a question \"Question-1\" and two options \"op-1\" and \"op-2\"",
+            "result": {
+              "status": "passed",
+              "duration": 1372000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "I click on delete button",
+            "result": {
+              "status": "passed",
+              "duration": 129000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
             "name": "I should not be able to create question",
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 18000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "questions;validate-number-of-options-is-more-than-one",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Validate number of options is more than one",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "I open questions page",
+            "result": {
+              "status": "passed",
+              "duration": 2224000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I enter a question \"Question-1\" and one option \"op-1\"",
+            "result": {
+              "status": "passed",
+              "duration": 837000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "I should not be able to create question",
+            "result": {
+              "status": "passed",
+              "duration": 18000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "questions;validate-create-questions-button",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Validate create questions button",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 30,
+            "name": "I open questions page",
+            "result": {
+              "status": "passed",
+              "duration": 2022000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 31,
+            "name": "I enter a blank question",
+            "result": {
+              "status": "passed",
+              "duration": 186000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 32,
+            "name": "I should not be able to create question",
+            "result": {
+              "status": "passed",
+              "duration": 15000000
             }
           }
         ]
@@ -101,7 +251,7 @@
       {
         "id": "questions;validate-add-options-button",
         "keyword": "Scenario",
-        "line": 16,
+        "line": 34,
         "name": "Validate add options button",
         "tags": [],
         "type": "scenario",
@@ -109,31 +259,31 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 17,
+            "line": 35,
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 2599000000
+              "duration": 1951000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 18,
-            "name": "I enter a question and no option",
+            "line": 36,
+            "name": "I enter a question \"Question-1\" and no option",
             "result": {
               "status": "passed",
-              "duration": 581000000
+              "duration": 525000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 19,
+            "line": 37,
             "name": "I should not be able to create option",
             "result": {
               "status": "passed",
-              "duration": 16000000
+              "duration": 18000000
             }
           }
         ]
