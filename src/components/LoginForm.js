@@ -1,40 +1,37 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
 import {Label, Button, FormGroup, Input} from 'reactstrap';
-
-import axios from 'axios';
-import { Navigate } from "react-router-dom";
+import { connect } from 'react-redux';
+import { Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
-import { getBaseUrl } from "../functions";
+import { loginUser } from "../Store/actions";
 
-export default function LoginForm() {
+function LoginForm({token, loginUser}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+  const navigate = useNavigate();
+  
 
   function validateForm() {
     return username.length > 0 && password.length > 0;
   }
 
-  // function getBaseUrl() {
-  //   if(window.location.href.includes('localhost') === true) {
-  //     return `http://localhost:8000`;
-  //   }
-  //   return `https://privilegewalkbe.herokuapp.com`;
-  // }
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    axios.post(getBaseUrl(window) + `/auth/login/`, { username, password })
-      .then(async res => {
-        if (res.data.status === true) {
-            setLogin(true);
-        } else {
-            setErrMsg("Please check your username or password!");
-        }
-      });
+    localStorage.removeItem('token');
+    const action = await loginUser({username, password});
+    if (action.payload.token){
+      setLogin(true);
+      navigate("/events");
+    }else{
+      setErrMsg("Please check your username or password!");
+    }
+  }
+
+  function onSignUp() {
+    navigate("/signup");
   }
 
   return (
@@ -67,12 +64,30 @@ export default function LoginForm() {
         >
           Login
         </Button>
+        <Button size="lg"
+          style={{marginLeft: 20}}
+          onClick={onSignUp}
+        >
+          Sign Up
+        </Button>
         <div data-testid="loginErrorId" className="errMsg">{errMsg}</div>
       </Form>
       {
-          login &&
-          <Navigate to="/loggedin" />
+          token &&
+          <Navigate to="/" />
       }
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+  };
+};
+
+const mapDispatchToProps ={
+  loginUser
+};
+
+var LoginFormContainer = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default LoginFormContainer;

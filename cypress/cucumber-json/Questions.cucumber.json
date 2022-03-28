@@ -2,17 +2,17 @@
   {
     "description": "    I want to login to the app",
     "keyword": "Feature",
-    "name": "Login",
+    "name": "Questions",
     "line": 1,
-    "id": "login",
+    "id": "questions",
     "tags": [],
-    "uri": "Login.feature",
+    "uri": "Questions.feature",
     "elements": [
       {
-        "id": "login;app-login",
+        "id": "questions;create-new-question-successfully",
         "keyword": "Scenario",
         "line": 5,
-        "name": "App login",
+        "name": "Create new question successfully",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -20,49 +20,49 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 6,
-            "name": "I open login page",
+            "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 449000000
+              "duration": 2760000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 7,
-            "name": "I type in username and password",
+            "name": "I enter a question and options",
             "result": {
               "status": "passed",
-              "duration": 745000000
+              "duration": 890000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 8,
-            "name": "I click on Login button",
+            "name": "I click on create question",
             "result": {
               "status": "passed",
-              "duration": 103000000
+              "duration": 132000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "I should see the events page",
+            "name": "I should see the question",
             "result": {
               "status": "passed",
-              "duration": 635000000
+              "duration": 77000000
             }
           }
         ]
       },
       {
-        "id": "login;app-login-with-wrong-username",
+        "id": "questions;validate-create-questions-button",
         "keyword": "Scenario",
         "line": 11,
-        "name": "App login with wrong username",
+        "name": "Validate create questions button",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -70,90 +70,70 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 12,
-            "name": "I open login page",
+            "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 240000000
+              "duration": 2720000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 13,
-            "name": "I type in wrong username and password",
+            "name": "I enter a blank question",
             "result": {
               "status": "passed",
-              "duration": 678000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
-            "name": "I click on Login button",
-            "result": {
-              "status": "passed",
-              "duration": 93000000
+              "duration": 244000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 15,
-            "name": "I should see the error message",
+            "line": 14,
+            "name": "I should not be able to create question",
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 23000000
             }
           }
         ]
       },
       {
-        "id": "login;app-login-with-wrong-password",
+        "id": "questions;validate-add-options-button",
         "keyword": "Scenario",
-        "line": 17,
-        "name": "App login with wrong password",
+        "line": 16,
+        "name": "Validate add options button",
         "tags": [],
         "type": "scenario",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 18,
-            "name": "I open login page",
+            "line": 17,
+            "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 226000000
+              "duration": 2599000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 19,
-            "name": "I type in username and wrong password",
+            "line": 18,
+            "name": "I enter a question and no option",
             "result": {
               "status": "passed",
-              "duration": 702000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 20,
-            "name": "I click on Login button",
-            "result": {
-              "status": "passed",
-              "duration": 97000000
+              "duration": 581000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 21,
-            "name": "I should see the error message",
+            "line": 19,
+            "name": "I should not be able to create option",
             "result": {
               "status": "passed",
-              "duration": 172000000
+              "duration": 16000000
             }
           }
         ]

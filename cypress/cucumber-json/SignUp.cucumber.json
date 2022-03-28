@@ -1,0 +1,203 @@
+[
+  {
+    "description": "  I want to sign-up for using the app",
+    "keyword": "Feature",
+    "name": "SignUp",
+    "line": 1,
+    "id": "signup",
+    "tags": [],
+    "uri": "SignUp.feature",
+    "elements": [
+      {
+        "id": "signup;successful-sign-up",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Successful Sign-up",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I open the signup page",
+            "result": {
+              "status": "passed",
+              "duration": 293000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I Enter a valid First Name, Last Name, Username, Email, and Password",
+            "result": {
+              "status": "passed",
+              "duration": 1521000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I click on the \"Sign Up\" button",
+            "result": {
+              "status": "passed",
+              "duration": 106000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I should be taken to the \"login\" page for me to be able to login",
+            "result": {
+              "status": "passed",
+              "duration": 51000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "signup;invalid-email-entry",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Invalid email entry",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I open the signup page",
+            "result": {
+              "status": "passed",
+              "duration": 257000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I enter an invalid email such as \"howdy.com\"",
+            "result": {
+              "status": "passed",
+              "duration": 352000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "I should be notified that I have entered an \"Invalid email address\"",
+            "result": {
+              "status": "passed",
+              "duration": 18000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "signup;username-already-exists",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Username already exists",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "I am an existing user",
+            "result": {
+              "status": "passed",
+              "duration": 969000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I try to use the same \"username\" to sign-up again",
+            "result": {
+              "status": "passed",
+              "duration": 687000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I click on the \"Sign Up\" button",
+            "result": {
+              "status": "passed",
+              "duration": 99000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I should receive an error message saying \"username exists\"",
+            "result": {
+              "status": "passed",
+              "duration": 31000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "signup;email-already-exists",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Email already exists",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 23,
+            "name": "I am an existing user",
+            "result": {
+              "status": "passed",
+              "duration": 936000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "I try to use the same \"email\" to sign-up again",
+            "result": {
+              "status": "passed",
+              "duration": 704000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "I click on the \"Sign Up\" button",
+            "result": {
+              "status": "passed",
+              "duration": 101000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "I should receive an error message saying \"email exists\"",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'email exists' within the element: <div.mb-3.errMsg.justify-content-center.row> but never did.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/SignUp.feature:57:74)\n    at Context.resolveAndRunStepDefinition (http://localhost:8080/__cypress/tests?p=cypress/integration/SignUp.feature:11015:29)\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress/integration/SignUp.feature:10336:35)"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

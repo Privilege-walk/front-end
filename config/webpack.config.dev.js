@@ -1,5 +1,7 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
 
 module.exports = {
 
@@ -14,7 +16,10 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             template: './public/index.html'
-        })
+        }),
+        new webpack.DefinePlugin({
+            'process.env.BASE_URL': JSON.stringify('http://127.0.0.1:8000')
+        }),
     ],
 
     devServer: {

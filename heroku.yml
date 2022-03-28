@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: npm start -- --port $PORT
+  web: npm run start:prod -- --port $PORT
