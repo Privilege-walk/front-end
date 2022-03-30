@@ -11,6 +11,7 @@ import SignupForm from './SignupForm';
 import ProtectedRoute from './ProtectedRoute';
 import Events from './Events';
 import Questions from './Questions';
+import UserQRCode from './QRCode';
 
 class App extends React.Component {
     constructor(props) {
@@ -24,6 +25,7 @@ class App extends React.Component {
                 <Route exact path="/" element={<Navigate to="/login" />} />
                 <Route exact path="/login" element={<LoginForm />} />
                 <Route exact path="/signup" element={<SignupForm />} />
+                <Route exact path="/qrcode" element={<UserQRCode url="https://google.com" />} />
 
                 {/* All Protected routes */}
                 <Route  element={<ProtectedRoute />}>
