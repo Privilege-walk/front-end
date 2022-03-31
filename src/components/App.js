@@ -13,6 +13,8 @@ import Events from './Events';
 import Questions from './Questions';
 import UserQRCode from './QRCode';
 import Welcome from './Welcome';
+import Walk from './Walk';
+
 
 class App extends React.Component {
     constructor(props) {
@@ -28,6 +30,7 @@ class App extends React.Component {
                 <Route exact path="/signup" element={<SignupForm />} />
                 <Route exact path="/qrcode" element={<UserQRCode url="https://google.com" />} />
                 <Route exact path="/welcome" element={<Welcome />} />
+                <Route exact path="/walk" element={<Walk />} />
 
                 {/* All Protected routes */}
                 <Route  element={<ProtectedRoute />}>
