@@ -1,63 +1,51 @@
 import React from "react";
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+import UserQuestions from './UserQuestions';
+import LandingPage from './LandingPage';
+import ResultsPage from './ResultsPage';
 
+const START_PAGE = 0;
+const QUESTIONS_PAGE = 1;
+const RESULTS_PAGE = 2;
 
-export default function Walk(){
+export default class Walk extends React.Component{
     
-    return (
-        <Container 
-            min 
-            sx={{px:6, mt:3}}
-        >
-            <Grid sx={{border: '2px solid', minHeight: '40px'}} container justifyContent='center' alignItems='center' direction='column' spacing={2}>
-                {/* Header */}
-                <Grid lg={1} sx={{border: '2px solid'}} item direction='column'>
-                    <Grid sx={{border: '2px solid'}} item>
-                        <Typography  variant="h5" component="div">
-                            Perspective Walk
-                        </Typography>
-                    </Grid>
+    constructor(props){
+        super(props);
+        this.state = {
+            pageIndex: START_PAGE,
+        };
+    }
 
-                    <Grid sx={{border: '2px solid'}} item>
-                        <Typography  variant="h5" component="div">
-                            Graph
-                        </Typography>
-                    </Grid>
-                </Grid>
+    componentDidMount(){
+        // User would land on this page once they scan a QR code.
+        // Then we would use websockets to connect and get event details
+        this.setState({
+            pageIndex: START_PAGE
+        });
+    }
 
-                {/* Body */}
-                <Grid lg={10} sx={{border: '2px solid', minHeight: '225px'}} item direction='column'>
-                    <Grid sx={{border: '2px solid'}} item>
-                        <Typography  variant="h5" component="div">
-                            Question
-                        </Typography>
-                    </Grid>
+    handleNextPage(page){
+        this.setState({pageIndex: page});
+    }
 
-                    <Grid sx={{border: '2px solid'}} item>
-                        <Typography  variant="h5" component="div">
-                            Answers
-                        </Typography>
-                    </Grid>
-                </Grid>
-
-                {/* Footer */}
-                <Grid lg={1} sx={{border: '2px solid', minHeight: '50px'}} item direction='column'>
-                    <Grid sx={{border: '2px solid'}} item>
-                        <Typography  variant="h5" component="div">
-                            25/50 people answered so far. 
-                        </Typography>
-                    </Grid>
-
-                    <Grid sx={{border: '2px solid'}} item>
-                        <Typography  variant="h5" component="div">
-                            3/10 Questions answered so far.
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Container>
-    )
+    render(){
+        switch(this.state.pageIndex){
+            case START_PAGE:
+                return (
+                    <LandingPage 
+                        goNextPage={() => this.handleNextPage(QUESTIONS_PAGE)} 
+                    />
+                );
+            case QUESTIONS_PAGE:
+                return (
+                    <UserQuestions 
+                        goNextPage={() => this.handleNextPage(RESULTS_PAGE)} 
+                    />
+                );
+            case RESULTS_PAGE:
+                return (
+                    <ResultsPage />
+                );
+        }
+    }
 }
