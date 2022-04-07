@@ -24,7 +24,7 @@ export default function UserQRCode({url}) {
                 
                 <Grid item>
                     <Typography variant="h6" component="div">
-                        Link to join: {url}
+                        Link to join: <a href={url} id="urlToJoin">{url}</a>
                     </Typography>
                 </Grid>
 

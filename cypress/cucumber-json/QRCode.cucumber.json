@@ -1,0 +1,53 @@
+[
+  {
+    "description": "    I want to be given a link I can use to join an event.",
+    "keyword": "Feature",
+    "name": "QRCode",
+    "line": 1,
+    "id": "qrcode",
+    "tags": [],
+    "uri": "QRCode.feature",
+    "elements": [
+      {
+        "id": "qrcode;join-privilege-walk-event.",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Join privilege walk event.",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "The host shows me a link to join an event",
+            "result": {
+              "status": "passed",
+              "duration": 1290000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I visit the link given",
+            "result": {
+              "status": "passed",
+              "duration": 1374000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "I should be taken to the welcome page for the event",
+            "result": {
+              "status": "passed",
+              "duration": 27000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

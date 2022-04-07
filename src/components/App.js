@@ -28,7 +28,7 @@ class App extends React.Component {
                 <Route exact path="/" element={<Navigate to="/login" />} />
                 <Route exact path="/login" element={<LoginForm />} />
                 <Route exact path="/signup" element={<SignupForm />} />
-                <Route exact path="/qrcode" element={<UserQRCode url="https://google.com" />} />
+                <Route exact path="/qrcode" element={<UserQRCode url="http://localhost:8080/welcome" />} />
                 <Route exact path="/welcome" element={<Welcome />} />
                 <Route exact path="/walk" element={<Walk />} />
 

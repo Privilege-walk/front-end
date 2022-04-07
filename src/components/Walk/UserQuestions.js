@@ -14,7 +14,8 @@ export default class UserQuestions extends React.Component{
         this.state = {
             questions: [],
             questionIndex: -1,
-            answers: {}
+            answers: {},
+            nextButtonText: "next"
         };
     }
 
@@ -48,7 +49,7 @@ export default class UserQuestions extends React.Component{
             <Grid container lg={1} item direction='column'>
                 {/* Title */}
                 <Grid item>
-                    <Typography  variant="h5" component="div">
+                    <Typography id="eventName"  variant="h5" component="div">
                         Event: {this.state.eventName}
                     </Typography>
                 </Grid>
@@ -64,15 +65,18 @@ export default class UserQuestions extends React.Component{
 
     handleSelectChoice(choiceId, selected){
         let answer = choiceId;
+        let nextButtonText = "Waiting for host ...";
         if(selected){
             answer = "";
+            nextButtonText = "next";
         }
         this.setState(prevState => {
             let answers = { ...prevState.answers };
             let questionId = prevState.questions[prevState.questionIndex].id;
             answers[questionId] = answer;
             return ({
-                answers
+                answers,
+                nextButtonText
             })
         })
     }
@@ -89,7 +93,7 @@ export default class UserQuestions extends React.Component{
             <Grid container lg={10} sx={{ minHeight: '225px'}} item direction='column'>
                 {/* Question */}
                 <Grid item>
-                    <Typography  variant="h6" component="div">
+                    <Typography id="question"  variant="h6" component="div">
                         {this.state.questions[this.state.questionIndex]? 
                             this.state.questions[this.state.questionIndex].description : 
                             ""
@@ -100,6 +104,7 @@ export default class UserQuestions extends React.Component{
                 {/* Choices */}
                 <Grid 
                     sx={{mb: 1}} 
+                    id="choices"
                     container item 
                     alignItems="flex-start" 
                     direction="column" 
@@ -111,6 +116,7 @@ export default class UserQuestions extends React.Component{
                                     variant="outlined" 
                                     onClick={() => this.handleSelectChoice(choice.id, true)}
                                     sx={{mx:1, mt:1}} 
+                                    className="choice"
                                     style={{ border: '3px solid' }}
                                     key={choice.id}
                                 >
@@ -120,6 +126,7 @@ export default class UserQuestions extends React.Component{
                             (
                                 <Button 
                                     variant="outlined" 
+                                    className="choice"
                                     onClick={() => this.handleSelectChoice(choice.id, false)}
                                     sx={{mx:1, mt:1}} 
                                     key={choice.id}
@@ -147,7 +154,7 @@ export default class UserQuestions extends React.Component{
 
                 <Grid container direction="column" item >
 
-                    <Typography  variant="p" component="div">
+                    <Typography id="numQuestions"  variant="p" component="div">
                         {this.state.questionIndex + 1}/{this.state.questions.length} Questions
                     </Typography>
                     
@@ -160,7 +167,7 @@ export default class UserQuestions extends React.Component{
                     onClick={this.handleNext.bind(this)}
                     disabled={!this.state.answers[questionIndex]}
                 >
-                    Next
+                    Waiting for host ...
                 </Button>  
             </Grid>
         );

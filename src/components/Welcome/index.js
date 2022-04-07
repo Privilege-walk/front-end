@@ -3,20 +3,22 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Welcome(){
-    
+    const navigate = useNavigate();
+
     return (
         <Container sx={{px : 6, mt: 5}}>
             <Grid container justifyContent='center' alignItems='center' direction='column' spacing={2}>
                 <Grid item>
-                    <Typography variant="h5" component="div">
+                    <Typography id="eventName" variant="h5" component="div">
                         Perspective Walk
                     </Typography>
                 </Grid>
 
                 <Grid item>
-                    <Typography variant="p" component="div">
+                    <Typography id="eventDescription" variant="p" component="div">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                     when an unknown printer took a galley of type and scrambled it to make a type 
@@ -29,7 +31,7 @@ export default function Welcome(){
                 </Grid>
 
                 <Grid item sx={{ mt: 2 }}>
-                    <Button variant="outlined">Start</Button>
+                    <Button onClick={() => {navigate('/walk')}} variant="outlined">Start</Button>
                 </Grid>
             </Grid>
         </Container>

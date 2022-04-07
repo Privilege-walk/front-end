@@ -1,0 +1,53 @@
+[
+  {
+    "description": "    I want to join an event after learning more about the event. ",
+    "keyword": "Feature",
+    "name": "Event welcome page.",
+    "line": 1,
+    "id": "event-welcome-page.",
+    "tags": [],
+    "uri": "Welcome.feature",
+    "elements": [
+      {
+        "id": "event-welcome-page.;join-a-live-event",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Join a live event",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am on the welcome page for an event",
+            "result": {
+              "status": "passed",
+              "duration": 547000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I click on the start button",
+            "result": {
+              "status": "passed",
+              "duration": 364000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "I should be taken to the questions page where I can begin answering questions",
+            "result": {
+              "status": "passed",
+              "duration": 89000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -12,7 +12,7 @@ export default class Walk extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            pageIndex: START_PAGE,
+            pageIndex: QUESTIONS_PAGE,
         };
     }
 
@@ -20,7 +20,7 @@ export default class Walk extends React.Component{
         // User would land on this page once they scan a QR code.
         // Then we would use websockets to connect and get event details
         this.setState({
-            pageIndex: START_PAGE
+            pageIndex: QUESTIONS_PAGE
         });
     }
 
