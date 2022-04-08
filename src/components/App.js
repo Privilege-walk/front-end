@@ -29,7 +29,6 @@ class App extends React.Component {
                 <Route exact path="/login" element={<LoginForm />} />
                 <Route exact path="/signup" element={<SignupForm />} />
                 <Route exact path="/event/host/live" element={<UserQRCode url="http://localhost:8080/welcome" />} />
-                <Route exact path="/welcome" element={<Welcome />} />
                 <Route  path="/walk/:eventId" element={<Walk />} />
 
                 {/* All Protected routes */}

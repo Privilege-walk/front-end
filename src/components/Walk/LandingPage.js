@@ -5,25 +5,26 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { event } from "../../api/mockData/event";
 
-export default function LandingPage({goNextPage}){
+export default function LandingPage({eventName}){
     
     return (
         <Container sx={{px : 6, mt: 5}}>
             <Grid container justifyContent='center' alignItems='center' direction='column' spacing={2}>
                 <Grid item>
                     <Typography variant="h5" component="div">
-                        {event.name}
+                        {eventName}
                     </Typography>
                 </Grid>
 
                 <Grid item>
                     <Typography variant="p" component="div">
-                        {event.description}
+                        Waiting for the host to start the event. Your answers are
+                        anonymized and will not be stored by the host. 
                     </Typography>
                 </Grid>
 
                 <Grid item sx={{ mt: 2 }}>
-                    <Button onClick={goNextPage} variant="outlined">Start</Button>
+                    <Button onClick={()=>{}} variant="outlined">Waiting for host ...</Button>
                 </Grid>
             </Grid>
         </Container>
