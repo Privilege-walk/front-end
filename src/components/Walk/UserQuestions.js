@@ -5,6 +5,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { eventQuestions } from "../../api/mockData/questions";
 import { event } from "../../api/mockData/event";
+import { getWebSocketBaseUrl } from "../../api/functions";
+import Cookies from 'js-cookie';
 
 
 export default class UserQuestions extends React.Component{
@@ -29,6 +31,57 @@ export default class UserQuestions extends React.Component{
             eventName: event.name,
             eventDescription: event.description
         });
+
+        // Websockets 
+    }
+
+    receiveHandler(inData){
+        // Do nothing if the message received is only for the participants
+        // Do nothing if the message received is only for the participants
+        if(inData['meant_for'] === 'host')
+        {
+            return;
+        }
+
+        // Handling the active users count updating
+        if(inData['type'] === 'active_user_count')
+        {
+            this.setActiveUsers(inData['data']['n_active_users']);
+        }
+
+        // Handling the question move
+        if(inData['type'] === 'question_move')
+        {
+            this.nextQuestion();
+        }
+
+        // Handling the change in the number of user responses
+        else if(inData['type'] === 'answer_count')
+        {
+            this.setAnsweredUsers(inData['data']['n_users_answered']);
+        }
+    }
+
+    nextQuestion(){
+        // TODO
+    }
+
+    setAnsweredUsers(){
+        // TODO
+    }
+
+    setActiveUsers(){
+        // TODO
+    }
+
+    initializeWebsocket(eventId){
+        const url = getWebSocketBaseUrl() + "/ws/walk/qa_control/" + eventId + "/";
+        this.websocket = new WebSocket(url);
+        this.websocket.onmessage = (event) => {
+            const inData = JSON.parse(event.data);
+            this.receiveHandler(inData);
+        }
+
     }
 
     handleNext(event){
@@ -78,7 +131,24 @@ export default class UserQuestions extends React.Component{
                 answers,
                 nextButtonText
             })
-        })
+        });
+
+        // Q: Where do we get the cookie in the first place?
+        // When users join an event how does the backend know without the user sending their first answer?
+        var participant_code = "DOOT"; // Replace this with the participant code stored in the cookies
+        // Cookies.get('participant_code')
+
+        walkSocket.send(
+            JSON.stringify(
+                {
+                    "type": "answer_choice",
+                    "data": {
+                        "participant_code": participant_code,
+                        "answer_choice_id": answer_id
+                    }
+                }
+            )
+        );
     }
 
     renderBody(){

@@ -1,51 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import UserQuestions from './UserQuestions';
 import LandingPage from './LandingPage';
 import ResultsPage from './ResultsPage';
+import { useParams } from 'react-router-dom';
+
 
 const START_PAGE = 0;
 const QUESTIONS_PAGE = 1;
 const RESULTS_PAGE = 2;
 
-export default class Walk extends React.Component{
+function Walk(){
     
-    constructor(props){
-        super(props);
-        this.state = {
-            pageIndex: QUESTIONS_PAGE,
-        };
-    }
+    const [pageIndex, setPageIndex] = useState(START_PAGE);
 
-    componentDidMount(){
-        // User would land on this page once they scan a QR code.
-        // Then we would use websockets to connect and get event details
-        this.setState({
-            pageIndex: QUESTIONS_PAGE
-        });
-    }
+    const { eventId } = useParams();
 
-    handleNextPage(page){
-        this.setState({pageIndex: page});
+    // User would land on this page once they scan a QR code.
+    // Then we would use websockets to connect and get event details
+    switch(pageIndex){
+        case START_PAGE:
+            return (
+                <LandingPage 
+                    goNextPage={() => setPageIndex(QUESTIONS_PAGE)} 
+                />
+            );
+        case QUESTIONS_PAGE:
+            return (
+                <UserQuestions 
+                    goNextPage={() => setPageIndex(RESULTS_PAGE)} 
+                />
+            );
+        case RESULTS_PAGE:
+            return (
+                <ResultsPage />
+            );
     }
-
-    render(){
-        switch(this.state.pageIndex){
-            case START_PAGE:
-                return (
-                    <LandingPage 
-                        goNextPage={() => this.handleNextPage(QUESTIONS_PAGE)} 
-                    />
-                );
-            case QUESTIONS_PAGE:
-                return (
-                    <UserQuestions 
-                        goNextPage={() => this.handleNextPage(RESULTS_PAGE)} 
-                    />
-                );
-            case RESULTS_PAGE:
-                return (
-                    <ResultsPage />
-                );
-        }
-    }
+    
 }
+
+export default Walk;

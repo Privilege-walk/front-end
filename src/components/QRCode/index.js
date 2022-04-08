@@ -4,15 +4,22 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import { useLocation } from "react-router-dom";
+import { getFrontendBaseUrl } from "../../api/functions";
 
+export default function UserQRCode() {
+    const props = useLocation();
+    const url = getFrontendBaseUrl() + "/walk/" + props.state.id; 
 
-export default function UserQRCode({url}) {
     return (
         <Paper sx={{p : 2}}>
             <Grid container justifyContent='center' alignItems='center' direction='column' spacing={2}>
                 <Grid item>
+                    <Typography sx={{mb:3}} variant="h5" component="div">
+                        Event: {props.state.name}
+                    </Typography>
                     <Typography variant="h6" component="div">
-                        Scan QR code to join
+                        Scan to join event 
                     </Typography>
                 </Grid>
 

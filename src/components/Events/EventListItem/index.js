@@ -17,6 +17,10 @@ export default function EventListItem({ id, name, status }) {
         navigate('/questions', { state: {id, name, status} });
     }
 
+    function redirectToLiveEvent(){
+        navigate('/event/host/live', {state: {id, name, status}});
+    }
+
     return (
         <Card className="">
             <CardContent>
@@ -30,6 +34,15 @@ export default function EventListItem({ id, name, status }) {
                     onClick={redirectToQuestions}
                 >
                     Edit
+                </Button>
+
+                <Button
+                    sx={{ml:3}} 
+                    variant="outlined" 
+                    size="md"
+                    onClick={redirectToLiveEvent}
+                >
+                    Go Live
                 </Button>
             </CardActions>
             
