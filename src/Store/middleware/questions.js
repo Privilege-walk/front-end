@@ -5,7 +5,6 @@ import { restClient } from "../../api/restInterceptor";
 const fetchAllQuestions = async (payload) => {
     await restClient.get(`/host/qa/eventwise_qas/`, { params: payload.params })
     .then(async res => {
-        console.log(res);
         if (res.data && res.data.hasOwnProperty('questions')) {
             payload = {
                 ...payload, 

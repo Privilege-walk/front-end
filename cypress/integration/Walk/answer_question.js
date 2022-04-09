@@ -1,5 +1,5 @@
 Given("I am on the walk questionnaire", () => {
-    cy.visit("/walk");
+    cy.visit("/host/walk/7");
 });
 
 When("I answer a question", () => {

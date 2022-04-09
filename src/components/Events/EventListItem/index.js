@@ -18,7 +18,7 @@ export default function EventListItem({ id, name, status }) {
     }
 
     function redirectToLiveEvent(){
-        navigate('/event/host/live', {state: {id, name, status}});
+        navigate('/host/walk/' + id);
     }
 
     return (

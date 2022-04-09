@@ -7,16 +7,15 @@ import Button from '@mui/material/Button';
 import { useLocation } from "react-router-dom";
 import { getFrontendBaseUrl } from "../../api/functions";
 
-export default function UserQRCode() {
-    const props = useLocation();
-    const url = getFrontendBaseUrl() + "/walk/" + props.state.id; 
+export default function UserQRCode({eventId, eventName, goNextPage}) {
+    const url = getFrontendBaseUrl() + "/walk/" + eventId; 
 
     return (
         <Paper sx={{p : 2}}>
             <Grid container justifyContent='center' alignItems='center' direction='column' spacing={2}>
                 <Grid item>
                     <Typography sx={{mb:3}} variant="h5" component="div">
-                        Event: {props.state.name}
+                        Event: {eventName}
                     </Typography>
                     <Typography variant="h6" component="div">
                         Scan to join event 
@@ -36,7 +35,12 @@ export default function UserQRCode() {
                 </Grid>
 
                 <Grid item>
-                    <Button variant="outlined">Start</Button>
+                    <Button 
+                        variant="outlined"
+                        onClick={() => goNextPage()}
+                    >
+                        Start
+                    </Button>
                 </Grid>
             </Grid>
         </Paper>   
