@@ -20,19 +20,23 @@ const signupUser = async (payload) => {
 
 
 const loginUser = async (payload) => {
-    const {username, password} = payload;
-    await restClient.post(
-        `/auth/login/`, 
-        { username, password }
-    ).then(async res => {
-        let token = "";
-        if (res.data.status === true) {
-            token = res.data.token;  
-            localStorage.setItem("token", token); 
-        } 
-        payload = { ...payload, token}
-    });
-    return payload;
+    try{ 
+        const {username, password} = payload;
+        await restClient.post(
+            `/auth/login/`, 
+            { username, password }
+        ).then(async res => {
+            let token = "";
+            if (res.data.status === true) {
+                token = res.data.token;  
+                localStorage.setItem("token", token); 
+            } 
+            payload = { ...payload, token}
+        });
+        return payload;
+    }catch(error){
+        console.log(error);
+    }
      
 }
 

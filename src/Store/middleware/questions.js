@@ -6,7 +6,13 @@ const fetchAllQuestions = async (payload) => {
     await restClient.get(`/host/qa/eventwise_qas/`, { params: payload.params })
     .then(async res => {
         if (res.data && res.data.hasOwnProperty('questions')) {
-            payload = {...payload, questions: res.data.questions};
+            payload = {
+                ...payload, 
+                id:res.data.id, 
+                name: res.data.name,
+                status: res.data.status, 
+                questions: res.data.questions
+            };
         } else {
             payload = { ...payload, errors: "Unable to load questions"}
         }

@@ -1,9 +1,9 @@
 import { verifyToken, loginUser, signupUser } from "./authorization";
-import { fetchEvents, createEvent } from "./events";
+import { fetchEvents, createEvent, registerParticipant } from "./events";
 import { fetchQuestions, createQuestion } from "./questions";
 
 export {
     verifyToken, loginUser, signupUser,
-    fetchEvents, createEvent,
+    fetchEvents, createEvent, registerParticipant,
     fetchQuestions, createQuestion
 }

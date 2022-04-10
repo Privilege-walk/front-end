@@ -18,7 +18,9 @@ module.exports = {
             template: './public/index.html'
         }),
         new webpack.DefinePlugin({
-            'process.env.BASE_URL': JSON.stringify('http://127.0.0.1:8000')
+            'process.env.BASE_URL': JSON.stringify('http://127.0.0.1:8000'),
+            'process.env.WEB_SOCKET_BASE_URL': JSON.stringify('ws://localhost:8000'),
+            'process.env.FRONTEND_BASE_URL': JSON.stringify('http://localhost:8080')
         }),
     ],
 

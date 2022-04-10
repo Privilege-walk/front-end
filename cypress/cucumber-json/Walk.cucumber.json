@@ -1,0 +1,52 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Walk Questionnaire",
+    "line": 1,
+    "id": "walk-questionnaire",
+    "tags": [],
+    "uri": "Walk.feature",
+    "elements": [
+      {
+        "id": "walk-questionnaire;answer-question-as-a-user.",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Answer question as a user.",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on the walk questionnaire",
+            "result": {
+              "status": "passed",
+              "duration": 1591000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I answer a question",
+            "result": {
+              "status": "passed",
+              "duration": 180000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I should see text explaining that I am waiting for host",
+            "result": {
+              "status": "passed",
+              "duration": 30000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
