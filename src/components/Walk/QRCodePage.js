@@ -36,6 +36,7 @@ export default function UserQRCode({eventId, eventName, goNextPage}) {
 
                 <Grid item>
                     <Button 
+                        id="start-event"
                         variant="outlined"
                         onClick={() => goNextPage()}
                     >

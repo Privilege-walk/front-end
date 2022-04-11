@@ -23,7 +23,7 @@
             "name": "I open login page",
             "result": {
               "status": "passed",
-              "duration": 2690000000
+              "duration": 9773000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I type in username and password",
             "result": {
               "status": "passed",
-              "duration": 2215000000
+              "duration": 1126000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I click on Login button",
             "result": {
               "status": "passed",
-              "duration": 291000000
+              "duration": 142000000
             }
           },
           {
@@ -52,9 +52,8 @@
             "line": 9,
             "name": "I should see the events page",
             "result": {
-              "status": "failed",
-              "duration": 425000000,
-              "error_message": "Error: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Request failed with status code 404\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n    at createError (webpack://react-app/./node_modules/axios/lib/core/createError.js?:16:15)\n    at settle (webpack://react-app/./node_modules/axios/lib/core/settle.js?:17:12)\n    at XMLHttpRequest.onloadend (webpack://react-app/./node_modules/axios/lib/adapters/xhr.js?:66:7)\nFrom previous event:\n    at CommandQueue.run (http://localhost:8080/__cypress/runner/cypress_runner.js:186601:21)\n    at CommandQueue.run (http://localhost:8080/__cypress/runner/cypress_runner.js:172258:15)\n    at $Cy.cy.<computed> [as then] (http://localhost:8080/__cypress/runner/cypress_runner.js:173256:18)\n    at __stackReplacementMarker (http://localhost:8080/__cypress/runner/cypress_runner.js:172741:13)\n    at Context.runnable.fn (http://localhost:8080/__cypress/runner/cypress_runner.js:173474:19)\n    at callFn (http://localhost:8080/__cypress/runner/cypress_runner.js:125619:21)\n    at Test.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:125606:7)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180375:30\nFrom previous event:\n    at Object.onRunnableRun (http://localhost:8080/__cypress/runner/cypress_runner.js:180360:19)\n    at $Cypress.action (http://localhost:8080/__cypress/runner/cypress_runner.js:169744:28)\n    at Test.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:178039:13)\n    at Runner.../driver/node_modules/mocha/lib/runner.js.Runner.runTest (http://localhost:8080/__cypress/runner/cypress_runner.js:126278:10)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126404:12\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126187:14)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126197:7\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126099:14)\n    at Hook.<anonymous> (http://localhost:8080/__cypress/runner/cypress_runner.js:126160:7)\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:180273:24)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180302:13\nFrom previous event:\n    at onNext (http://localhost:8080/__cypress/runner/cypress_runner.js:180299:59)\n    at done (http://localhost:8080/__cypress/runner/cypress_runner.js:125559:5)\n    at callFn (http://localhost:8080/__cypress/runner/cypress_runner.js:125642:7)\n    at Hook.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:125606:7)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180375:30\nFrom previous event:\n    at Object.onRunnableRun (http://localhost:8080/__cypress/runner/cypress_runner.js:180360:19)\n    at $Cypress.action (http://localhost:8080/__cypress/runner/cypress_runner.js:169744:28)\n    at Hook.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:178039:13)\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126121:10)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126165:5\n    at timeslice (http://localhost:8080/__cypress/runner/cypress_runner.js:120091:27)"
+              "status": "passed",
+              "duration": 633000000
             }
           }
         ]
@@ -74,7 +73,7 @@
             "name": "I open login page",
             "result": {
               "status": "passed",
-              "duration": 727000000
+              "duration": 772000000
             }
           },
           {
@@ -84,7 +83,7 @@
             "name": "I type in wrong username and password",
             "result": {
               "status": "passed",
-              "duration": 905000000
+              "duration": 702000000
             }
           },
           {
@@ -93,8 +92,8 @@
             "line": 14,
             "name": "I click on Login button",
             "result": {
-              "status": "failed",
-              "error_message": "Error: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Request failed with status code 404\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n    at createError (webpack://react-app/./node_modules/axios/lib/core/createError.js?:16:15)\n    at settle (webpack://react-app/./node_modules/axios/lib/core/settle.js?:17:12)\n    at XMLHttpRequest.onloadend (webpack://react-app/./node_modules/axios/lib/adapters/xhr.js?:66:7)\nFrom previous event:\n    at CommandQueue.run (http://localhost:8080/__cypress/runner/cypress_runner.js:186601:21)\n    at CommandQueue.run (http://localhost:8080/__cypress/runner/cypress_runner.js:172258:15)\n    at $Cy.cy.<computed> [as then] (http://localhost:8080/__cypress/runner/cypress_runner.js:173256:18)\n    at __stackReplacementMarker (http://localhost:8080/__cypress/runner/cypress_runner.js:172741:13)\n    at Context.runnable.fn (http://localhost:8080/__cypress/runner/cypress_runner.js:173474:19)\n    at callFn (http://localhost:8080/__cypress/runner/cypress_runner.js:125619:21)\n    at Test.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:125606:7)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180375:30\nFrom previous event:\n    at Object.onRunnableRun (http://localhost:8080/__cypress/runner/cypress_runner.js:180360:19)\n    at $Cypress.action (http://localhost:8080/__cypress/runner/cypress_runner.js:169744:28)\n    at Test.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:178039:13)\n    at Runner.../driver/node_modules/mocha/lib/runner.js.Runner.runTest (http://localhost:8080/__cypress/runner/cypress_runner.js:126278:10)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126404:12\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126187:14)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126197:7\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126099:14)\n    at Hook.<anonymous> (http://localhost:8080/__cypress/runner/cypress_runner.js:126160:7)\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:180273:24)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180302:13\nFrom previous event:\n    at onNext (http://localhost:8080/__cypress/runner/cypress_runner.js:180299:59)\n    at done (http://localhost:8080/__cypress/runner/cypress_runner.js:125559:5)\n    at callFn (http://localhost:8080/__cypress/runner/cypress_runner.js:125642:7)\n    at Hook.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:125606:7)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180375:30\nFrom previous event:\n    at Object.onRunnableRun (http://localhost:8080/__cypress/runner/cypress_runner.js:180360:19)\n    at $Cypress.action (http://localhost:8080/__cypress/runner/cypress_runner.js:169744:28)\n    at Hook.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:178039:13)\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126121:10)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126165:5\n    at timeslice (http://localhost:8080/__cypress/runner/cypress_runner.js:120091:27)"
+              "status": "passed",
+              "duration": 149000000
             }
           },
           {
@@ -103,7 +102,8 @@
             "line": 15,
             "name": "I should see the error message",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 21000000
             }
           }
         ]
@@ -123,7 +123,7 @@
             "name": "I open login page",
             "result": {
               "status": "passed",
-              "duration": 198000000
+              "duration": 568000000
             }
           },
           {
@@ -133,7 +133,7 @@
             "name": "I type in username and wrong password",
             "result": {
               "status": "passed",
-              "duration": 867000000
+              "duration": 629000000
             }
           },
           {
@@ -142,8 +142,8 @@
             "line": 20,
             "name": "I click on Login button",
             "result": {
-              "status": "failed",
-              "error_message": "Error: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Request failed with status code 404\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n    at createError (webpack://react-app/./node_modules/axios/lib/core/createError.js?:16:15)\n    at settle (webpack://react-app/./node_modules/axios/lib/core/settle.js?:17:12)\n    at XMLHttpRequest.onloadend (webpack://react-app/./node_modules/axios/lib/adapters/xhr.js?:66:7)\nFrom previous event:\n    at CommandQueue.run (http://localhost:8080/__cypress/runner/cypress_runner.js:186601:21)\n    at CommandQueue.run (http://localhost:8080/__cypress/runner/cypress_runner.js:172258:15)\n    at $Cy.cy.<computed> [as then] (http://localhost:8080/__cypress/runner/cypress_runner.js:173256:18)\n    at __stackReplacementMarker (http://localhost:8080/__cypress/runner/cypress_runner.js:172741:13)\n    at Context.runnable.fn (http://localhost:8080/__cypress/runner/cypress_runner.js:173474:19)\n    at callFn (http://localhost:8080/__cypress/runner/cypress_runner.js:125619:21)\n    at Test.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:125606:7)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180375:30\nFrom previous event:\n    at Object.onRunnableRun (http://localhost:8080/__cypress/runner/cypress_runner.js:180360:19)\n    at $Cypress.action (http://localhost:8080/__cypress/runner/cypress_runner.js:169744:28)\n    at Test.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:178039:13)\n    at Runner.../driver/node_modules/mocha/lib/runner.js.Runner.runTest (http://localhost:8080/__cypress/runner/cypress_runner.js:126278:10)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126404:12\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126187:14)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126197:7\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126099:14)\n    at Hook.<anonymous> (http://localhost:8080/__cypress/runner/cypress_runner.js:126160:7)\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:180273:24)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180302:13\nFrom previous event:\n    at onNext (http://localhost:8080/__cypress/runner/cypress_runner.js:180299:59)\n    at done (http://localhost:8080/__cypress/runner/cypress_runner.js:125559:5)\n    at callFn (http://localhost:8080/__cypress/runner/cypress_runner.js:125642:7)\n    at Hook.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:125606:7)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:180375:30\nFrom previous event:\n    at Object.onRunnableRun (http://localhost:8080/__cypress/runner/cypress_runner.js:180360:19)\n    at $Cypress.action (http://localhost:8080/__cypress/runner/cypress_runner.js:169744:28)\n    at Hook.Runnable.run (http://localhost:8080/__cypress/runner/cypress_runner.js:178039:13)\n    at next (http://localhost:8080/__cypress/runner/cypress_runner.js:126121:10)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:126165:5\n    at timeslice (http://localhost:8080/__cypress/runner/cypress_runner.js:120091:27)"
+              "status": "passed",
+              "duration": 98000000
             }
           },
           {
@@ -152,7 +152,8 @@
             "line": 21,
             "name": "I should see the error message",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 216000000
             }
           }
         ]

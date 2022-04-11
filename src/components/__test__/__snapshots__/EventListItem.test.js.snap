@@ -24,10 +24,22 @@ exports[`renders without crashing 1`] = `
     >
       <button
         class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMd MuiButton-outlinedSizeMd MuiButtonBase-root  css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+        id="edit-undefined"
         tabindex="0"
         type="button"
       >
         Edit
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMd MuiButton-outlinedSizeMd MuiButtonBase-root  css-hmexeu-MuiButtonBase-root-MuiButton-root"
+        id="go-live-undefined"
+        tabindex="0"
+        type="button"
+      >
+        Go Live
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />

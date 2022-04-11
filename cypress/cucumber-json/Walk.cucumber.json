@@ -8,41 +8,51 @@
     "uri": "Walk.feature",
     "elements": [
       {
-        "id": "walk-questionnaire;answer-question-as-a-user.",
+        "id": "walk-questionnaire;be-able-to-start-the-event",
         "keyword": "Scenario",
-        "line": 3,
-        "name": "Answer question as a user.",
+        "line": 8,
+        "name": "Be able to start the event",
         "tags": [],
         "type": "scenario",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
-            "name": "I am on the walk questionnaire",
+            "line": 9,
+            "name": "I create an event and add Questions and click on go live",
             "result": {
               "status": "passed",
-              "duration": 1591000000
+              "duration": 44837000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 5,
-            "name": "I answer a question",
+            "line": 10,
+            "name": "I start the event",
             "result": {
               "status": "passed",
-              "duration": 180000000
+              "duration": 10000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 6,
-            "name": "I should see text explaining that I am waiting for host",
+            "line": 11,
+            "name": "Host should move to a page showing the current question tenants are viewing",
             "result": {
               "status": "passed",
-              "duration": 30000000
+              "duration": 14000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "Users should move to a page and be able to see and answer the first question of the event",
+            "result": {
+              "status": "passed",
+              "duration": 7000000
             }
           }
         ]
