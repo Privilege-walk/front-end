@@ -23,7 +23,7 @@
             "name": "I am on the welcome page for an event",
             "result": {
               "status": "passed",
-              "duration": 547000000
+              "duration": 45012000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I click on the start button",
             "result": {
               "status": "passed",
-              "duration": 364000000
+              "duration": 2000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I should be taken to the questions page where I can begin answering questions",
             "result": {
               "status": "passed",
-              "duration": 89000000
+              "duration": 2000000
             }
           }
         ]

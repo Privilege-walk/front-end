@@ -54,7 +54,7 @@ export default class Questions extends React.Component{
             <Grid container lg={10} sx={{ minHeight: '225px'}} item direction='column'>
                 {/* Question */}
                 <Grid item>
-                    <Typography id={"question"}  variant="h6" component="div">
+                    <Typography id={"question"} data-testid={"question"} variant="h6" component="div">
                         {questionDetails? 
                             questionDetails.description : 
                             ""
@@ -80,6 +80,7 @@ export default class Questions extends React.Component{
                                     className="choice"
                                     style={{ border: '3px solid' }}
                                     key={choice.id}
+                                    data-testid={'choice'+choice.id}
                                 >
                                     {choice.description}
                                 </Button>
@@ -91,6 +92,7 @@ export default class Questions extends React.Component{
                                     onClick={() => this.handleSelectChoice(choice.id, false)}
                                     sx={{mx:1, mt:1}} 
                                     key={choice.id}
+                                    data-testid={'choice'+choice.id}
                                 >
                                     {choice.description}
                                 </Button>
@@ -112,7 +114,7 @@ export default class Questions extends React.Component{
             <Grid container lg={10} sx={{ minHeight: '225px'}} item direction='column'>
                 {/* Question */}
                 <Grid item>
-                    <Typography id={"question"}  variant="h6" component="div">
+                    <Typography id={"question"} data-testid={"question"} variant="h6" component="div">
                         {questionDetails? 
                             questionDetails.description : 
                             ""

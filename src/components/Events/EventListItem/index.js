@@ -29,6 +29,7 @@ export default function EventListItem({ id, name, status }) {
             </CardContent>
             <CardActions>
                 <Button 
+                    id={'edit-'+id}
                     variant="outlined" 
                     size="md"
                     onClick={redirectToQuestions}
@@ -37,6 +38,7 @@ export default function EventListItem({ id, name, status }) {
                 </Button>
 
                 <Button
+                    id={'go-live-'+id}
                     sx={{ml:3}} 
                     variant="outlined" 
                     size="md"

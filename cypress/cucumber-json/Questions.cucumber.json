@@ -23,7 +23,7 @@
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 13025000000
+              "duration": 19918000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I enter a question \"Question-1\" and two options \"op-1\" and \"op-2\"",
             "result": {
               "status": "passed",
-              "duration": 1535000000
+              "duration": 1498000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I click on create question",
             "result": {
               "status": "passed",
-              "duration": 144000000
+              "duration": 160000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "I should see the question \"Question-1\" and options \"op-1\" and \"op-2\"",
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 69000000
             }
           }
         ]
@@ -73,7 +73,7 @@
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 1974000000
+              "duration": 2231000000
             }
           },
           {
@@ -83,7 +83,7 @@
             "name": "I enter a question \"Question-2\" and two options \"op-3\" and \"op-4\"",
             "result": {
               "status": "passed",
-              "duration": 1417000000
+              "duration": 1543000000
             }
           },
           {
@@ -93,7 +93,7 @@
             "name": "I edit \"op-4\" option to \"op-5\"",
             "result": {
               "status": "passed",
-              "duration": 446000000
+              "duration": 444000000
             }
           },
           {
@@ -103,7 +103,7 @@
             "name": "I click on create question",
             "result": {
               "status": "passed",
-              "duration": 139000000
+              "duration": 180000000
             }
           },
           {
@@ -113,7 +113,7 @@
             "name": "I should see the question \"Question-2\" and options \"op-3\" and \"op-5\"",
             "result": {
               "status": "passed",
-              "duration": 117000000
+              "duration": 49000000
             }
           }
         ]
@@ -133,7 +133,7 @@
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 1943000000
+              "duration": 2030000000
             }
           },
           {
@@ -143,7 +143,7 @@
             "name": "I enter a question \"Question-1\" and two options \"op-1\" and \"op-2\"",
             "result": {
               "status": "passed",
-              "duration": 1372000000
+              "duration": 1367000000
             }
           },
           {
@@ -153,7 +153,7 @@
             "name": "I click on delete button",
             "result": {
               "status": "passed",
-              "duration": 129000000
+              "duration": 131000000
             }
           },
           {
@@ -163,7 +163,7 @@
             "name": "I should not be able to create question",
             "result": {
               "status": "passed",
-              "duration": 18000000
+              "duration": 21000000
             }
           }
         ]
@@ -183,7 +183,7 @@
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 2224000000
+              "duration": 2229000000
             }
           },
           {
@@ -193,7 +193,7 @@
             "name": "I enter a question \"Question-1\" and one option \"op-1\"",
             "result": {
               "status": "passed",
-              "duration": 837000000
+              "duration": 1053000000
             }
           },
           {
@@ -223,7 +223,7 @@
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 2022000000
+              "duration": 2294000000
             }
           },
           {
@@ -243,7 +243,7 @@
             "name": "I should not be able to create question",
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 16000000
             }
           }
         ]
@@ -263,7 +263,7 @@
             "name": "I open questions page",
             "result": {
               "status": "passed",
-              "duration": 1951000000
+              "duration": 2087000000
             }
           },
           {
@@ -273,7 +273,7 @@
             "name": "I enter a question \"Question-1\" and no option",
             "result": {
               "status": "passed",
-              "duration": 525000000
+              "duration": 535000000
             }
           },
           {
@@ -283,7 +283,7 @@
             "name": "I should not be able to create option",
             "result": {
               "status": "passed",
-              "duration": 18000000
+              "duration": 17000000
             }
           }
         ]

@@ -23,7 +23,7 @@
             "name": "I open the signup page",
             "result": {
               "status": "passed",
-              "duration": 30226000000
+              "duration": 38142000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I Enter a valid First Name, Last Name, Username, Email, and Password",
             "result": {
               "status": "passed",
-              "duration": 1946000000
+              "duration": 1600000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I click on the \"Sign Up\" button",
             "result": {
               "status": "passed",
-              "duration": 98000000
+              "duration": 103000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "I should be taken to the \"login\" page for me to be able to login",
             "result": {
               "status": "passed",
-              "duration": 200000000
+              "duration": 198000000
             }
           }
         ]
@@ -73,7 +73,7 @@
             "name": "I open the signup page",
             "result": {
               "status": "passed",
-              "duration": 208000000
+              "duration": 120000000
             }
           },
           {
@@ -83,7 +83,7 @@
             "name": "I enter an invalid email such as \"howdy.com\"",
             "result": {
               "status": "passed",
-              "duration": 291000000
+              "duration": 329000000
             }
           },
           {
@@ -93,7 +93,7 @@
             "name": "I should be notified that I have entered an \"Invalid email address\"",
             "result": {
               "status": "passed",
-              "duration": 18000000
+              "duration": 12000000
             }
           }
         ]
@@ -113,7 +113,7 @@
             "name": "I am an existing user",
             "result": {
               "status": "passed",
-              "duration": 718000000
+              "duration": 813000000
             }
           },
           {
@@ -123,7 +123,7 @@
             "name": "I try to use the same \"username\" to sign-up again",
             "result": {
               "status": "passed",
-              "duration": 636000000
+              "duration": 654000000
             }
           },
           {
@@ -163,7 +163,7 @@
             "name": "I am an existing user",
             "result": {
               "status": "passed",
-              "duration": 705000000
+              "duration": 730000000
             }
           },
           {
@@ -173,7 +173,7 @@
             "name": "I try to use the same \"email\" to sign-up again",
             "result": {
               "status": "passed",
-              "duration": 568000000
+              "duration": 561000000
             }
           },
           {
@@ -183,7 +183,7 @@
             "name": "I click on the \"Sign Up\" button",
             "result": {
               "status": "passed",
-              "duration": 90000000
+              "duration": 92000000
             }
           },
           {
@@ -193,7 +193,7 @@
             "name": "I should receive an error message saying \"email exists\"",
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 50000000
             }
           }
         ]

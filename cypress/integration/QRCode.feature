@@ -5,5 +5,5 @@ Feature: QRCode
     Scenario: Join privilege walk event. 
         Given The host shows me a link to join an event 
         When I visit the link given
-        Then I should be taken to the welcome page for the event 
+        Then I should see text explaining that I am waiting for host 
  
