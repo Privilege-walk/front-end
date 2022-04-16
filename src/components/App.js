@@ -12,7 +12,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Events from './Events';
 import Questions from './Questions';
 import { UserLiveEvent, HostLiveEvent } from './Walk';
-
+import ResultsPage from './Walk/ResultsPage';
 
 class App extends React.Component {
     constructor(props) {
@@ -28,6 +28,7 @@ class App extends React.Component {
                 <Route exact path="/signup" element={<SignupForm />} />
                 {/* <Route exact path="/event/host/live" element={<UserQRCode  />} /> */}
                 <Route  path="/walk/:eventId" element={<UserLiveEvent />} />
+                <Route path="/results" element={<ResultsPage />} />
 
                 {/* All Protected routes */}
                 <Route  element={<ProtectedRoute />}>
