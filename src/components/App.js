@@ -13,6 +13,9 @@ import Events from './Events';
 import Questions from './Questions';
 import { UserLiveEvent, HostLiveEvent } from './Walk';
 import ResultsPage from './Walk/ResultsPage';
+import Content from './dashboard/Content';
+import Dashboard from '../components/dashboard';
+import Paperbase from '../dashboard/Paperbase';
 
 class App extends React.Component {
     constructor(props) {
@@ -29,6 +32,8 @@ class App extends React.Component {
                 {/* <Route exact path="/event/host/live" element={<UserQRCode  />} /> */}
                 <Route  path="/walk/:eventId" element={<UserLiveEvent />} />
                 <Route path="/results" element={<ResultsPage />} />
+                <Route path='/dashboard' element={<Paperbase />} />
+                <Route path='/dashboard-2' element={<Dashboard />} />
 
                 {/* All Protected routes */}
                 <Route  element={<ProtectedRoute />}>
@@ -47,9 +52,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <Dashboard>
                 {this.renderRoutes()}
-            </div>
+            </Dashboard>
         );
     }
 
