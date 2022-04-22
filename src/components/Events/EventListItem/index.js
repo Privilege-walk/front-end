@@ -60,7 +60,7 @@ export default function EventListItem({ id, name, status }) {
 
     let cardActionsFunc = renderEndEventActions;
     let badgeColor = "danger";
-    if(status == "creatd"){
+    if(status == "created"){
         badgeColor = "primary";
         cardActionsFunc = renderNewEventActions;
     }
