@@ -21,32 +21,60 @@ export default function EventListItem({ id, name, status }) {
         navigate('/host/walk/' + id);
     }
 
-    return (
-        <Card className="">
-            <CardContent>
-            <Typography>{name} <Badge color="primary">{status}</Badge></Typography>
-            
-            </CardContent>
-            <CardActions>
+    function renderNewEventActions(){
+        return(
+            <React.Fragment>
+            <Button 
+                id={'edit-'+id}
+                variant="outlined" 
+                size="md"
+                onClick={redirectToQuestions}
+            >
+                Edit
+            </Button>
+
+            <Button
+                id={'go-live-'+id}
+                sx={{ml:3}} 
+                variant="outlined" 
+                size="md"
+                onClick={redirectToLiveEvent}
+            >
+                Go Live
+            </Button>
+        </React.Fragment>);
+    }
+
+    function renderEndEventActions(){
+        return (<React.Fragment>
                 <Button 
                     id={'edit-'+id}
                     variant="outlined" 
                     size="md"
                     onClick={redirectToQuestions}
                 >
-                    Edit
+                    Results
                 </Button>
+        </React.Fragment>);
+    }
 
-                <Button
-                    id={'go-live-'+id}
-                    sx={{ml:3}} 
-                    variant="outlined" 
-                    size="md"
-                    onClick={redirectToLiveEvent}
-                >
-                    Go Live
-                </Button>
+    let cardActionsFunc = renderEndEventActions;
+    let badgeColor = "danger";
+    if(status == "created"){
+        badgeColor = "primary";
+        cardActionsFunc = renderNewEventActions;
+    }
+    return (
+        <Card className="">
+            <CardContent>
+            <Typography>{name} <Badge color={badgeColor}>{status}</Badge></Typography>
+            
+            
+            </CardContent>
+            <CardActions>
+                {cardActionsFunc()}
             </CardActions>
+            
             
         </Card>
     );
