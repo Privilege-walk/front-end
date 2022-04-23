@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 
 import CardContent from '@mui/material/CardContent';
+import Timer from './Timer';
 
 
 export default class Questions extends React.Component{
@@ -189,7 +190,11 @@ export default class Questions extends React.Component{
                             Waiting for host ...
                         </Button>
                     )
-                        }  
+                }
+                {
+                    this.props.userType == "HOST" &&
+                    <Timer questionIndex={this.props.questionIndex} />
+                }
             </Grid>
         );
     }
