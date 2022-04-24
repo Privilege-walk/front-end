@@ -4,18 +4,40 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import Radio from '@mui/material/Radio';
+import FormLabel from '@mui/material/FormLabel';
+import Box from '@mui/material/Box';
 
 import CardContent from '@mui/material/CardContent';
+import Timer from './Timer';
+import QuestionGraph from "../Graphs/QuestionGraph";
+import WalkGraph from "../Graphs/WalkGraph";
 
 
 export default class Questions extends React.Component{
     
     constructor(props){
         super(props);
+        let questionDetails = this.props.questions[this.props.questionIndex];
+        this.state = {
+            selectedValue: questionDetails ? questionDetails.choices[0].id : "",
+            disalbleSubmit: false
+        };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.questionIndex !== prevProps.questionIndex) {
+            let questionDetails = this.props.questions[this.props.questionIndex];
+            this.setState({
+                disalbleSubmit: false,
+                selectedValue: questionDetails ? questionDetails.choices[0].id : ""
+            });
+        }
     }
     
-    handleSelectChoice(choiceId, selected){
-        let answer = selected? "" : choiceId;
+    handleSelectChoice(choiceId){
+        this.setState({disalbleSubmit: true});
+        let answer = choiceId;
         const props = this.props;
         let answers = { ...props.answers };
         let questionId = props.questions[props.questionIndex].id;
@@ -71,34 +93,33 @@ export default class Questions extends React.Component{
                     direction="column" 
                 >
                     {choices.map((choice, _) => (
-                        choice.id == this.props.answers[questionDetails.id]?
-                            (
-                                <Button
-                                    variant="outlined" 
-                                    onClick={() => this.handleSelectChoice(choice.id, true)}
-                                    sx={{mx:1, mt:1}} 
-                                    className="choice"
-                                    style={{ border: '3px solid' }}
-                                    key={choice.id}
-                                    data-testid={'choice'+choice.id}
-                                >
-                                    {choice.description}
-                                </Button>
-                            ):
-                            (
-                                <Button 
-                                    variant="outlined" 
-                                    className="choice"
-                                    onClick={() => this.handleSelectChoice(choice.id, false)}
-                                    sx={{mx:1, mt:1}} 
-                                    key={choice.id}
-                                    data-testid={'choice'+choice.id}
-                                >
-                                    {choice.description}
-                                </Button>
-                            )
+                        <Box key={choice.id}>
+                            <Radio
+                                checked={choice.id === this.state.selectedValue}
+                                onChange={() => this.setState({selectedValue: choice.id})}
+                                value={choice.id}
+                                name={"radio-buttons-"+choice.id}
+                                inputProps={{ 'aria-label': 'A' }}
+                                disabled={this.state.disalbleSubmit}
+                            />
+                            <FormLabel 
+                                id={"radio-label-"+choice.id}
+                                onClick={() => this.setState({selectedValue: choice.id})}
+                            >
+                                {choice.description}
+                            </FormLabel>
+                        </Box>
                         )
                     )}
+                    <Button
+                        variant="outlined"
+                        sx={{mx:1, mt:1}}
+                        className="choice"
+                        disabled={this.state.disalbleSubmit}
+                        onClick={() => this.handleSelectChoice(this.state.selectedValue)}
+                    >
+                        Submit
+                    </Button>
                 </Grid>
             </Grid>
         );
@@ -111,7 +132,7 @@ export default class Questions extends React.Component{
             question = questionDetails.description;
         }
         return (
-            <Grid container lg={10} sx={{ minHeight: '225px'}} item direction='column'>
+            <Grid container lg={1} sx={{ minHeight: '225px'}} item direction='column'>
                 {/* Question */}
                 <Grid item>
                     <Typography id={"question"} data-testid={"question"} variant="h6" component="div">
@@ -151,7 +172,7 @@ export default class Questions extends React.Component{
         const question = this.props.questions[this.props.questionIndex];
         const questionIndex = question? question.id: "";
         return (
-            <Grid container lg={1} sx={{minHeight: '50px'}} item direction='column'>
+            <Grid container sx={{minHeight: '50px'}} item direction='column'>
                 {/* Number of people who have answered so far */}
                 {/* <Grid item>
                     <Typography  variant="h6" component="div"> 
@@ -171,7 +192,7 @@ export default class Questions extends React.Component{
                         <Button 
                             variant={this.props.activeUsers == this.props.answeredUsers? "contained" : "outlined"}
                             type="submit"
-                            sx={{mt:2}}
+                            sx={{mt:2, width: '30%'}}
                             onClick={()=> this.props.nextQuestion()}                         
                         >
                             Next Question
@@ -189,7 +210,34 @@ export default class Questions extends React.Component{
                             Waiting for host ...
                         </Button>
                     )
-                        }  
+                }
+                {
+                    this.props.userType == "HOST" &&
+                    <Timer questionIndex={this.props.questionIndex} />
+                }
+            </Grid>
+        );
+    }
+    renderHostGraphs() {
+        return (
+            <Grid container item direction='column'>
+                <Grid container direction="column" item >
+                    <Typography id="question_graph"  variant="p" component="div">
+                        {this.props.questions[this.props.questionIndex]['description']}
+                    </Typography>
+                    <QuestionGraph data={this.props.questionsStats[this.props.questionIndex]} />
+                </Grid>
+                {
+                    this.props.currentPositions &&
+                    this.props.currentPositions.hasOwnProperty('data') &&
+                    this.props.currentPositions['data'].length !== 0 &&
+                    <Grid container direction="column" item >
+                        <Typography id="question_graph"  variant="p" component="div">
+                            Current Positions
+                        </Typography>
+                        <WalkGraph data={this.props.currentPositions} />
+                    </Grid>
+                }
             </Grid>
         );
     }
@@ -199,19 +247,21 @@ export default class Questions extends React.Component{
             case 'HOST':
                 return (
                     <Container 
-                        sx={{px:6, mt:3}}
+                        sx={{px:6, mt:3, display: 'flex', flexDirection: 'row'}}
                     >
                         <Grid 
                             sx={{minHeight: '40px'}} 
                             container 
-                            justifyContent='center' 
+                            // justifyContent='center' 
                             alignItems='center' 
                             direction='column' 
                             spacing={2}
-                        ></Grid>
-                        {this.renderHeader()}
-                        {this.renderHostBody()}
-                        {this.renderFooter()}
+                        >
+                            {this.renderHeader()}
+                            {this.renderHostBody()}
+                            {this.renderFooter()}
+                        </Grid>
+                        {this.renderHostGraphs()}
                     </Container>
                 )
         }
