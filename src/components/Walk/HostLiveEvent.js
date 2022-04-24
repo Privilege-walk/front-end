@@ -101,26 +101,17 @@ function HostLiveEvent({fetchQuestions}){
         }
 
         else if(inData['type'] === 'line_counts') {
-            let temp_dat = {
-                "meant_for": "host",
-                "type": "line_counts",
-                "data": {
-                    "position_stats": {
-                        "-2": 2,
-                        "-1": 4
-                    }
-                }
-            }
             let positions = {
                 "barDefaultColor": "#8884d8",
                 "xLabelMin": x_label_min,
                 "xLabelMax": x_label_max,
                 "data": []
             }
-            for(let [key, value] of Object.entries(temp_dat['data']['position_stats'])) {
+            for(let [key, value] of Object.entries(inData['data']['position_stats'])) {
                 positions.data.push({
                     "barName":"",
                     "count": value,
+                    "line_number": key,
                     "participantLocation": false
                 });
             }
