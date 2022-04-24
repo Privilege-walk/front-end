@@ -39,6 +39,7 @@ function EventResults({fetchAnswerStats, fetchEventStats}){
         const action = await fetchAnswerStats({eventId});
         if(action.payload.data){
             setAnswerStats(action.payload.data);
+
         }
     }
 
@@ -49,6 +50,7 @@ function EventResults({fetchAnswerStats, fetchEventStats}){
             eventId, 
             uniqueCode: uniqueCode=="host"? "" : uniqueCode
         });
+        console.log(action);
         if(action.payload.data){
             setWalkStats(action.payload.data);
         }

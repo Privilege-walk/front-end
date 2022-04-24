@@ -19,6 +19,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { connect } from 'react-redux';
 import "../App.css";
 import EventListItem from "./EventListItem";
+import EventForm from './EventForm';
 import { fetchEvents, createEvent } from '../../Store/actions';
 
 
@@ -64,45 +65,9 @@ class Events extends React.Component {
         }
     }
 
-    handleSubmit = async (event) => {
-        const action = await this.props.createEvent({ newEventName: this.state.newEventName});
-        if (action.payload.status == "created"){
-            this.fetchAllEvents();
-            this.setState({newEventName: ""});
-        }else{
-            this.setErrMsg("Unable to create the event!");
-        }
-    }
 
     renderNewEventForm(){
-        return (<Paper 
-            className="mb-3 align-items-center" 
-            variant="outlined" 
-            sx={{ p: '2px 4px',  display: 'flex',  flexGrow: 1, alignItems: 'center'}}
-        >
-            <FormControl error={this.state.errMsg.length > 0} fullWidth sx={{ m: 1 }}>
-                <InputLabel htmlFor="new-event-name">New Event Name</InputLabel>
-                <OutlinedInput
-                    id="new-event-name"
-                    label="New Event Name" 
-                    variant="filled"
-                    autoComplete="off"
-                    value={this.state.newEventName}
-                    onChange={(e) => this.changeNewEventName(e.target.value)}
-                />
-                <FormHelperText data-testid="event-error-text">{this.state.errMsg}</FormHelperText>
-            </FormControl>
-            <Box>
-                <Button 
-                    variant="contained"
-                    type="submit"
-                    className="ml-2"
-                    onClick={this.handleSubmit}
-                >
-                    Create Event
-                </Button>  
-            </Box>
-        </Paper>);
+       return (<EventForm fetchAllEvents={this.fetchAllEvents.bind(this)} />);
     }
 
     render() {

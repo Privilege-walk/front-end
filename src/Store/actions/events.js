@@ -10,9 +10,9 @@ export const fetchEvents = () => ({
     payload: { events: []}
 })
 
-export const createEvent = ({newEventName}) => ({
+export const createEvent = ({newEventName, xLabelMin, xLabelMax}) => ({
     type: CREATE_EVENT,
-    payload: { newEventName }
+    payload: { newEventName,  xLabelMin, xLabelMax }
 })
 
 export const registerParticipant = ({eventId}) => ({

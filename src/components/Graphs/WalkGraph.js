@@ -11,11 +11,12 @@ const renderCustomizedLabel = (props) => {
     const { x, y, width, height, value } = props;
     const radius = 10;
   
+    console.log(x, y, width, height, value);
     if(value){
         return (
             <g>
-              {/* <circle cx={x + width / 2} cy={y - radius} r={radius} fill="red" /> */}
-              <text x={x + width / 2} y={y - radius} fill={"#82ca9d"} textAnchor="middle" dominantBaseline="middle">
+              <circle cx={x + width / 2} cy={y - radius} r={radius} fill="red" />
+              <text x={x + width / 2} y={y - radius} fill={"#FC766AFF"} textAnchor="middle" dominantBaseline="middle">
                 Your Location
               </text>
             </g>
@@ -37,12 +38,12 @@ export default function WalkGraph({ data }){
             sx={{px:6, mt:3}}
         >
             <Grid
-                height='250px'
+                height='260px'
             >
                 <ResponsiveContainer width="100%" height="100%">
                 <BarChart
-                    width={500}
-                    height={300}
+                    // width={500}
+                    // height={250}
                     data={data["data"]}
                     margin={{
                         top: 5,
@@ -55,9 +56,9 @@ export default function WalkGraph({ data }){
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="count" name="Number of Participants" fill={"#8884d8"} minPointSize={5}>
+                    <Bar dataKey="count" name="Number of Participants" fill={"#5B84B1FF"} minPointSize={5}>
                         {data["data"].map((entry, index) => (
-                            <Cell cursor="pointer" fill={ entry["participantLocation"] == true ? '#82ca9d' : '#8884d8'} key={`cell-${index}`} />
+                            <Cell cursor="pointer" fill={ entry["participantLocation"] == true ? '#FC766AFF' : '#5B84B1FF'} key={`cell-${index}`} />
                         ))}
                         <LabelList dataKey="participantLocation" content={renderCustomizedLabel} />
                     </Bar>
