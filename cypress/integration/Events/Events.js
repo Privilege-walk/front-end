@@ -8,6 +8,8 @@ Given("I open events page", () => {
 
 When('I type a new event name', () => {
     cy.get('input[id="new-event-name"]').type('Christmas eve event')
+    cy.get('input[id="x-label-min"]').type('Least gifts')
+    cy.get('input[id="x-label-min"]').type('Most gifts')
 })
 
 And('I click on create event button', () => {

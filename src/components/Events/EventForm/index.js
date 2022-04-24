@@ -55,10 +55,10 @@ function EventForm({fetchAllEvents, createEvent}){
         </FormControl>
 
         <FormControl fullWidth sx={{ m: 1 }}>
-            <InputLabel htmlFor="new-event-name">X Label Min</InputLabel>
+            <InputLabel htmlFor="x-label-min">X Label Min</InputLabel>
             <OutlinedInput
-                id="new-event-name"
-                label="New Event Name" 
+                id="x-label-min"
+                label="X Label Min"
                 variant="filled"
                 autoComplete="off"
                 value={xLabelMin}
@@ -67,10 +67,10 @@ function EventForm({fetchAllEvents, createEvent}){
         </FormControl>
 
         <FormControl fullWidth sx={{ m: 1 }}>
-            <InputLabel htmlFor="new-event-name">X Label Max</InputLabel>
+            <InputLabel htmlFor="x-label-max">X Label Max</InputLabel>
             <OutlinedInput
-                id="new-event-name"
-                label="New Event Name" 
+                id="x-label-max"
+                label="X Label Max"
                 variant="filled"
                 autoComplete="off"
                 value={xLabelMax}
