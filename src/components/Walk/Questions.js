@@ -4,6 +4,9 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import Radio from '@mui/material/Radio';
+import FormLabel from '@mui/material/FormLabel';
+import Box from '@mui/material/Box';
 
 import CardContent from '@mui/material/CardContent';
 import Timer from './Timer';
@@ -13,10 +16,26 @@ export default class Questions extends React.Component{
     
     constructor(props){
         super(props);
+        let questionDetails = this.props.questions[this.props.questionIndex];
+        this.state = {
+            selectedValue: questionDetails ? questionDetails.choices[0].id : "",
+            disalbleSubmit: false
+        };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.questionIndex !== prevProps.questionIndex) {
+            let questionDetails = this.props.questions[this.props.questionIndex];
+            this.setState({
+                disalbleSubmit: false,
+                selectedValue: questionDetails ? questionDetails.choices[0].id : ""
+            });
+        }
     }
     
-    handleSelectChoice(choiceId, selected){
-        let answer = selected? "" : choiceId;
+    handleSelectChoice(choiceId){
+        this.setState({disalbleSubmit: true});
+        let answer = choiceId;
         const props = this.props;
         let answers = { ...props.answers };
         let questionId = props.questions[props.questionIndex].id;
@@ -72,34 +91,28 @@ export default class Questions extends React.Component{
                     direction="column" 
                 >
                     {choices.map((choice, _) => (
-                        choice.id == this.props.answers[questionDetails.id]?
-                            (
-                                <Button
-                                    variant="outlined" 
-                                    onClick={() => this.handleSelectChoice(choice.id, true)}
-                                    sx={{mx:1, mt:1}} 
-                                    className="choice"
-                                    style={{ border: '3px solid' }}
-                                    key={choice.id}
-                                    data-testid={'choice'+choice.id}
-                                >
-                                    {choice.description}
-                                </Button>
-                            ):
-                            (
-                                <Button 
-                                    variant="outlined" 
-                                    className="choice"
-                                    onClick={() => this.handleSelectChoice(choice.id, false)}
-                                    sx={{mx:1, mt:1}} 
-                                    key={choice.id}
-                                    data-testid={'choice'+choice.id}
-                                >
-                                    {choice.description}
-                                </Button>
-                            )
+                        <Box key={choice.id}>
+                            <Radio
+                                checked={choice.id === this.state.selectedValue}
+                                onChange={() => this.setState({selectedValue: choice.id})}
+                                value={choice.id}
+                                name={"radio-buttons-"+choice.id}
+                                inputProps={{ 'aria-label': 'A' }}
+                                disabled={this.state.disalbleSubmit}
+                            />
+                            <FormLabel id={"radio-label-"+choice.id}>{choice.description}</FormLabel>
+                        </Box>
                         )
                     )}
+                    <Button
+                        variant="outlined"
+                        sx={{mx:1, mt:1}}
+                        className="choice"
+                        disabled={this.state.disalbleSubmit}
+                        onClick={() => this.handleSelectChoice(this.state.selectedValue)}
+                    >
+                        Submit
+                    </Button>
                 </Grid>
             </Grid>
         );

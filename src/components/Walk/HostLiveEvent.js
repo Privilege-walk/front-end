@@ -56,7 +56,8 @@ function HostLiveEvent({fetchQuestions}){
 
         // Handling the active users count updating
         if(inData['type'] === 'active_user_count') {
-            setActiveUsers(inData['data']['n_active_users'] - 1);
+            // setActiveUsers(inData['data']['n_active_users'] - 1);
+            setActiveUsers(inData['data']['n_active_users']);
         }
 
         // Handling the change in the number of user responses
@@ -80,6 +81,7 @@ function HostLiveEvent({fetchQuestions}){
                 setPageIndex(RESULTS_PAGE);
             }else{
                 setQuestionIndex(index);
+                setAnsweredUsers(0);
             }
         }
     }
