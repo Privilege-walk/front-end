@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ResultsPage from './ResultsPage';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getWebSocketBaseUrl } from "../../api/functions";
 import useWebSocket from 'react-use-websocket';
@@ -12,7 +12,6 @@ import Questions from './Questions';
 
 const QRCODE_PAGE = 0;
 const QUESTIONS_PAGE = 1;
-const RESULTS_PAGE = 2;
 
 function HostLiveEvent({fetchQuestions}){
     const [pageIndex, setPageIndex] = useState(QRCODE_PAGE);
@@ -23,6 +22,7 @@ function HostLiveEvent({fetchQuestions}){
     const [answeredUsers, setAnsweredUsers] = useState(0);
     const [errMsg, setErrMsg] = useState("");
     const { eventId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(async () => fetchAllQuestions(), []);
 
@@ -78,7 +78,7 @@ function HostLiveEvent({fetchQuestions}){
             sendJsonMessage(message);
             
             if (index == questionsList.length){
-                setPageIndex(RESULTS_PAGE);
+                navigate(`/results/${eventId}/host`);
             }else{
                 setQuestionIndex(index);
                 setAnsweredUsers(0);
@@ -109,13 +109,9 @@ function HostLiveEvent({fetchQuestions}){
                     activeUsers={activeUsers}
                     answeredUsers={answeredUsers}
                     questionIndex={questionIndex}
-                    goNextPage={() => setPageIndex(RESULTS_PAGE)} 
+                    goNextPage={() => {} }
                     nextQuestion={() => nextQuestion()}
                 />
-            );
-        case RESULTS_PAGE:
-            return (
-                <ResultsPage />
             );
     }
 }

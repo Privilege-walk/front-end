@@ -14,6 +14,7 @@ const mockStore = configureMockStore(middlewares)
 const mockFetchQuestions = jest.fn();
 const mockRegisterParticipant = jest.fn();
 const mockUseParams = jest.fn();
+const mockUseNavigate = jest.fn();
 const mockGetWebSocketBaseUrl = jest.fn();
 const mockUseWebSocket = jest.fn();
 const mockSendJsonMessage = jest.fn();
@@ -23,6 +24,7 @@ jest.mock('../../Store/actions', () => ({
 }));
 jest.mock("react-router-dom", () => ({
     useParams: () => mockUseParams(),
+    useNavigate: () => mockUseNavigate()
 }))
 jest.mock("react-use-websocket", () => {
     // // sendJsonMessage: () => mockSendJsonMessage,

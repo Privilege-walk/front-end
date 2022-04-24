@@ -90,3 +90,40 @@ export const eventQuestions = [
     //     ]
     // },
 ]
+
+/**
+ * Questions Answer data format
+ */
+ export const questionAnswers = [
+    // Dictionary of questions in the order in which the questions were asked.
+    {
+        question: "Question 1?",
+        answers: [
+            {
+                "answer": "YES", // answer option
+                "count": 2  // Number of users who chose this answer for this question. 
+            },
+            {
+                "answer": "NO",
+                "count": 3
+            }
+        ],  
+    },
+    {
+        question: "Question 2?",
+        answers: [
+            {
+                "answer": "High Scool's",
+                "count": 10
+            },
+            {
+                "answer": "Bachelor's",
+                "count": 4
+            },
+            {
+                "answer": "Masters",
+                "count": 3
+            }
+        ],      
+    }
+]

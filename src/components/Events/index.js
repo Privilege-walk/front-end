@@ -30,7 +30,8 @@ class Events extends React.Component {
             eventsList: [],
             page: 0,
             rowsPerPage: 5,
-            errMsg: ""
+            errMsg: "",
+            pastEvents: props.pastEvents
         }
     }
 
@@ -73,40 +74,44 @@ class Events extends React.Component {
         }
     }
 
+    renderNewEventForm(){
+        return (<Paper 
+            className="mb-3 align-items-center" 
+            variant="outlined" 
+            sx={{ p: '2px 4px',  display: 'flex',  flexGrow: 1, alignItems: 'center'}}
+        >
+            <FormControl error={this.state.errMsg.length > 0} fullWidth sx={{ m: 1 }}>
+                <InputLabel htmlFor="new-event-name">New Event Name</InputLabel>
+                <OutlinedInput
+                    id="new-event-name"
+                    label="New Event Name" 
+                    variant="filled"
+                    autoComplete="off"
+                    value={this.state.newEventName}
+                    onChange={(e) => this.changeNewEventName(e.target.value)}
+                />
+                <FormHelperText data-testid="event-error-text">{this.state.errMsg}</FormHelperText>
+            </FormControl>
+            <Box>
+                <Button 
+                    variant="contained"
+                    type="submit"
+                    className="ml-2"
+                    onClick={this.handleSubmit}
+                >
+                    Create Event
+                </Button>  
+            </Box>
+        </Paper>);
+    }
+
     render() {
         return (
             <Container id="eventsPageId" className="mx-2">
                 <Row>
-                <h1 className="event">Events</h1>
+                    <h1 className="event">{this.props.pastEvents? "Previous Events": "Events"}</h1>
             
-                <Paper 
-                    className="mb-3 align-items-center" 
-                    variant="outlined" 
-                    sx={{ p: '2px 4px',  display: 'flex',  flexGrow: 1, alignItems: 'center'}}
-                >
-                    <FormControl error={this.state.errMsg.length > 0} fullWidth sx={{ m: 1 }}>
-                        <InputLabel htmlFor="new-event-name">New Event Name</InputLabel>
-                        <OutlinedInput
-                            id="new-event-name"
-                            label="New Event Name" 
-                            variant="filled"
-                            autoComplete="off"
-                            value={this.state.newEventName}
-                            onChange={(e) => this.changeNewEventName(e.target.value)}
-                        />
-                        <FormHelperText data-testid="event-error-text">{this.state.errMsg}</FormHelperText>
-                    </FormControl>
-                    <Box>
-                        <Button 
-                            variant="contained"
-                            type="submit"
-                            className="ml-2"
-                            onClick={this.handleSubmit}
-                        >
-                            Create Event
-                        </Button>  
-                    </Box>
-                </Paper>
+                    {this.props.pastEvents?  <span></span> : this.renderNewEventForm()}
 
                 </Row>
                 <TableContainer component={Paper}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getWebSocketBaseUrl } from "../../api/functions";
 import useWebSocket from 'react-use-websocket';
@@ -13,7 +13,6 @@ import ResultsPage from './ResultsPage';
 
 const START_PAGE = 0;
 const QUESTIONS_PAGE = 1;
-const RESULTS_PAGE = 2;
 
 function UserLiveEvent({fetchQuestions, registerParticipant}){
     
@@ -27,6 +26,7 @@ function UserLiveEvent({fetchQuestions, registerParticipant}){
     const [errMsg, setErrMsg] = useState("");
     const [participantCode, setParticipantCode] = useState("");    
     const { eventId } = useParams();
+    const navigate = useNavigate();
 
     const socketUrl = getWebSocketBaseUrl() + "/ws/walk/qa_control/" + eventId + "/";
     const {
@@ -98,7 +98,7 @@ function UserLiveEvent({fetchQuestions, registerParticipant}){
                     setPageIndex(QUESTIONS_PAGE);
                 }
             }else{
-                setPageIndex(RESULTS_PAGE);
+                navigate(`/results/${eventId}/${participantCode}`);
             }           
         }
 
@@ -119,6 +119,7 @@ function UserLiveEvent({fetchQuestions, registerParticipant}){
         }
     }
 
+
     switch(pageIndex){
         case START_PAGE:
             return (
@@ -136,12 +137,8 @@ function UserLiveEvent({fetchQuestions, registerParticipant}){
                     setAnswers={setAnswers}
                     questionIndex={questionIndex}
                     userType="PARTICIPANT"
-                    goNextPage={() => setPageIndex(RESULTS_PAGE)} 
+                    goNextPage={() => navigate(`/results/${eventId}/${participantCode}`) }
                 />
-            );
-        case RESULTS_PAGE:
-            return (
-                <ResultsPage />
             );
     }
     
