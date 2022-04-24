@@ -22,7 +22,11 @@ const fetchAllEvents = async (payload) => {
 const createEvent = async (payload) => {
     await restClient.post(
         `/host/events/create/`, 
-        { name: payload.newEventName }
+        { 
+            name: payload.newEventName, 
+            x_label_min: payload.xLabelMin, 
+            x_label_max: payload.xLabelMax,
+        }
     ).then(async res => {
         if (res.data && res.data.status === 'created') {
             payload = { ...payload, status: "created"}
@@ -61,9 +65,10 @@ const fetchEventResultsMiddleware = async (payload) => {
     const errMessage = "Couldn't fetch event results";
     try{
         let url = `/host/event_stats/?event_id=${payload.eventId}`
-        if (payload.unique_code){
+        if (payload.uniqueCode){
             url += `&unique_code=${payload.uniqueCode}`
         }
+        console.log(url);
         await restClient.get(
             url,
         ).then(async res => {

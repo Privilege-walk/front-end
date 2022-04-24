@@ -23,7 +23,7 @@
             "name": "The host shows me a link to join an event",
             "result": {
               "status": "passed",
-              "duration": 17125000000
+              "duration": 8119000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I visit the link given",
             "result": {
               "status": "passed",
-              "duration": 274000000
+              "duration": 187000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I should see text explaining that I am waiting for host",
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 11000000
             }
           }
         ]

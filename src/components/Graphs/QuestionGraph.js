@@ -5,7 +5,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { 
     BarChart, Bar, Legend,
-    YAxis, CartesianGrid,  
+    XAxis, YAxis, CartesianGrid,  
     ResponsiveContainer 
 } from 'recharts';
 
@@ -35,8 +35,9 @@ export default function QuestionGraph({ data }){
                         >
                         <CartesianGrid strokeDasharray="3 3" />
                         <YAxis />
+                        <XAxis dataKey="answer" />
                         <Legend />
-                        <Bar dataKey="count" fill={"#8884d8"} minPointSize={5}>
+                        <Bar dataKey="count" fill={"#5B84B1FF"} minPointSize={5}>
                         </Bar>
                     </BarChart>
                     </ResponsiveContainer>

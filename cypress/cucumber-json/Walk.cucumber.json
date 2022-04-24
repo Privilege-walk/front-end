@@ -22,7 +22,7 @@
             "name": "I create an event and add Questions and click on go live",
             "result": {
               "status": "passed",
-              "duration": 44837000000
+              "duration": 32145000000
             }
           },
           {
@@ -32,7 +32,7 @@
             "name": "I start the event",
             "result": {
               "status": "passed",
-              "duration": 10000000
+              "duration": 4000000
             }
           },
           {
@@ -42,7 +42,7 @@
             "name": "Host should move to a page showing the current question tenants are viewing",
             "result": {
               "status": "passed",
-              "duration": 14000000
+              "duration": 4000000
             }
           },
           {
@@ -52,7 +52,7 @@
             "name": "Users should move to a page and be able to see and answer the first question of the event",
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 3000000
             }
           }
         ]
