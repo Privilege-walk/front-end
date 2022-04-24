@@ -11,11 +11,9 @@ const renderCustomizedLabel = (props) => {
     const { x, y, width, height, value } = props;
     const radius = 10;
   
-    console.log(x, y, width, height, value);
     if(value){
         return (
             <g>
-              <circle cx={x + width / 2} cy={y - radius} r={radius} fill="red" />
               <text x={x + width / 2} y={y - radius} fill={"#FC766AFF"} textAnchor="middle" dominantBaseline="middle">
                 Your Location
               </text>
@@ -42,11 +40,9 @@ export default function WalkGraph({ data }){
             >
                 <ResponsiveContainer width="100%" height="100%">
                 <BarChart
-                    // width={500}
-                    // height={250}
                     data={data["data"]}
                     margin={{
-                        top: 5,
+                        top: 20,
                         right: 30,
                         left: 20,
                         bottom: 5,
