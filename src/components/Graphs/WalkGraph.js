@@ -55,6 +55,9 @@ export default function WalkGraph({ data }){
                     <CartesianGrid strokeDasharray="3 3" />
                     <YAxis />
                     <Tooltip />
+                    <XAxis dataKey="barName" />
+                    <XAxis label="Height"   />
+
                     <Legend />
                     <Bar dataKey="count" name="Number of Participants" fill={"#5B84B1FF"} minPointSize={5}>
                         {data["data"].map((entry, index) => (
@@ -62,9 +65,11 @@ export default function WalkGraph({ data }){
                         ))}
                         <LabelList dataKey="participantLocation" content={renderCustomizedLabel} />
                     </Bar>
+                    
                 </BarChart>
+                    
                 </ResponsiveContainer>
-            </Grid>
+              </Grid>  
         </Container>
     );
 }

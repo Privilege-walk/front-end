@@ -51,8 +51,18 @@ function EventResults({fetchAnswerStats, fetchEventStats}){
             eventId, 
             uniqueCode: uniqueCode=="host"? "" : uniqueCode
         });
+        console.log(action);
         if(action.payload.data){
-            setWalkStats(action.payload.data);
+            let stats = {
+                ...action.payload.data,
+                data: [
+                    {barName: action.payload.data.x_label_min, count:0, line_number:null, participantLocation: false},
+                    ...action.payload.data.data,
+                    {barName: action.payload.data.x_label_max, count:0, line_number:null, participantLocation: false}
+                ]
+            };
+            console.log(stats);
+            setWalkStats(stats);
         }
 
     }
