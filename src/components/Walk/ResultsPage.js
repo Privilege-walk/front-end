@@ -35,12 +35,13 @@ function EventResults({fetchAnswerStats, fetchEventStats}){
 
     useEffect(async () => getAnswerStats(), []);
 
-    async function getAnswerStats(){        
-        const action = await fetchAnswerStats({eventId});
-        if(action.payload.data){
-            setAnswerStats(action.payload.data);
-
-        }
+    async function getAnswerStats(){  
+        if (uniqueCode == "host"){
+            const action = await fetchAnswerStats({eventId});
+            if(action.payload.data){
+                setAnswerStats(action.payload.data);
+            }
+        }         
     }
 
     useEffect(async () =>  fetchWalkStats(), []);
@@ -50,7 +51,6 @@ function EventResults({fetchAnswerStats, fetchEventStats}){
             eventId, 
             uniqueCode: uniqueCode=="host"? "" : uniqueCode
         });
-        console.log(action);
         if(action.payload.data){
             setWalkStats(action.payload.data);
         }
