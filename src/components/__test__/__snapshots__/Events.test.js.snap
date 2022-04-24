@@ -58,6 +58,78 @@ exports[`fetch events list of items 1`] = `
           />
         </div>
         <div
+          class="MuiFormControl-root MuiFormControl-fullWidth css-1w4vsez-MuiFormControl-root"
+        >
+          <label
+            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            for="new-event-name"
+          >
+            X Label Min
+          </label>
+          <div
+            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            variant="filled"
+          >
+            <input
+              aria-invalid="false"
+              autocomplete="off"
+              class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              id="new-event-name"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-1ftyaf0"
+              >
+                <span>
+                  New Event Name
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth css-1w4vsez-MuiFormControl-root"
+        >
+          <label
+            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            for="new-event-name"
+          >
+            X Label Max
+          </label>
+          <div
+            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            variant="filled"
+          >
+            <input
+              aria-invalid="false"
+              autocomplete="off"
+              class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              id="new-event-name"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-1ftyaf0"
+              >
+                <span>
+                  New Event Name
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+        <div
           class="MuiBox-root css-0"
         >
           <button
@@ -234,6 +306,78 @@ exports[`renders without crashing: empty list 1`] = `
             class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
             data-testid="event-error-text"
           />
+        </div>
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth css-1w4vsez-MuiFormControl-root"
+        >
+          <label
+            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            for="new-event-name"
+          >
+            X Label Min
+          </label>
+          <div
+            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            variant="filled"
+          >
+            <input
+              aria-invalid="false"
+              autocomplete="off"
+              class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              id="new-event-name"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-1ftyaf0"
+              >
+                <span>
+                  New Event Name
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth css-1w4vsez-MuiFormControl-root"
+        >
+          <label
+            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            for="new-event-name"
+          >
+            X Label Max
+          </label>
+          <div
+            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            variant="filled"
+          >
+            <input
+              aria-invalid="false"
+              autocomplete="off"
+              class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              id="new-event-name"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-1ftyaf0"
+              >
+                <span>
+                  New Event Name
+                </span>
+              </legend>
+            </fieldset>
+          </div>
         </div>
         <div
           class="MuiBox-root css-0"
