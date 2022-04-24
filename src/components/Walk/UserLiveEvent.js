@@ -3,7 +3,6 @@ import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getWebSocketBaseUrl } from "../../api/functions";
 import useWebSocket from 'react-use-websocket';
-import Cookies from 'js-cookie';
 
 import { fetchQuestions, registerParticipant } from '../../Store/actions';
 import Questions from './Questions';
@@ -43,24 +42,14 @@ function UserLiveEvent({fetchQuestions, registerParticipant}){
     useEffect(async () => changeAnswer(), [answers]);
 
     async function fetchPartipantCode(){
-        const COOKIE_PARTICIPANT_CODE = 'participantCode';
-        const COOKIE_EVENT_ID = "eventId";
-        const savedEventId = Cookies.get(COOKIE_EVENT_ID);
-        const savedParticipantCode = Cookies.get(COOKIE_PARTICIPANT_CODE);
-        
-        if(eventId == savedEventId && savedParticipantCode){
-            setParticipantCode(savedParticipantCode);
+
+        const action = await registerParticipant({eventId});
+        if (action.payload.errors || action.payload.status != "registered"){
+            setErrMsg("Error! Unable to register for event. Please refresh your browser.")
         }else{
-            const action = await registerParticipant({eventId});
-            if (action.payload.errors || action.payload.status != "registered"){
-                setErrMsg("Error! Unable to register for event. Please refresh your browser.")
-            }else{
-                let newParticipantCode = action.payload.participantCode;
-                setParticipantCode(newParticipantCode);
-                Cookies.set(COOKIE_PARTICIPANT_CODE, newParticipantCode, { sameSite: 'strict' });
-                Cookies.set(COOKIE_EVENT_ID, eventId, { sameSite: 'strict' })
-            }  
-        }
+            let newParticipantCode = action.payload.participantCode;
+            setParticipantCode(newParticipantCode);
+        }  
     }
     
     async function changeAnswer() {
