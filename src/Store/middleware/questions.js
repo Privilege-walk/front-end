@@ -11,6 +11,8 @@ const fetchAllQuestions = async (payload) => {
                 id:res.data.id, 
                 name: res.data.name,
                 status: res.data.status, 
+                x_label_min: res.data.x_label_min,
+                x_label_max: res.data.x_label_max,
                 questions: res.data.questions
             };
         } else {

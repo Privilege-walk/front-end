@@ -22,6 +22,10 @@ function HostLiveEvent({fetchQuestions}){
     const [answeredUsers, setAnsweredUsers] = useState(0);
     const [errMsg, setErrMsg] = useState("");
     const { eventId } = useParams();
+    const [currentPositions, setCurrentPositions] = useState({});
+    const [questionsStats, setQuestionsStats] = useState([]);
+    const [x_label_min, set_x_label_min] = useState("");
+    const [x_label_max, set_x_label_max] = useState("");
     const navigate = useNavigate();
 
     useEffect(async () => fetchAllQuestions(), []);
@@ -32,8 +36,30 @@ function HostLiveEvent({fetchQuestions}){
             setErrMsg("Unable to display the questions list!");
         }else{
             setQuestionsList(action.payload.questions);
+            createQuestionsStats(action.payload.questions);
             setEventName(action.payload.name);
+            set_x_label_min(action.payload['x_label_min']);
+            set_x_label_max(action.payload['x_label_max']);
         }
+    }
+
+    function createQuestionsStats(questions) {
+        let stats = [];
+        for (let q of questions) {
+            let answers = [];
+            for (let c of q['choices']) {
+                answers.push({
+                    "answer_id": c.id,
+                    "answer": c.description,
+                    "count": 0
+                });
+            }
+            stats.push({
+                "question_id": q.id,
+                "answers": answers
+            })
+        }
+        setQuestionsStats(stats);
     }
 
     const socketUrl = getWebSocketBaseUrl() + "/ws/walk/qa_control/" + eventId + "/";
@@ -62,7 +88,43 @@ function HostLiveEvent({fetchQuestions}){
 
         // Handling the change in the number of user responses
         else if(inData['type'] === 'answer_count'){
+            let inc_ans_id = inData['data']['increment_answer_id'];
+            let stats = JSON.parse(JSON.stringify(questionsStats));
+            for (let i of stats[questionIndex]['answers']) {
+                if (i['answer_id'] === inc_ans_id) {
+                    i['count'] = i['count'] + 1;
+                    break;
+                }
+            }
+            setQuestionsStats(stats);
             setAnsweredUsers(Math.min(inData['data']['n_users_answered'], activeUsers - 1));
+        }
+
+        else if(inData['type'] === 'line_counts') {
+            let temp_dat = {
+                "meant_for": "host",
+                "type": "line_counts",
+                "data": {
+                    "position_stats": {
+                        "-2": 2,
+                        "-1": 4
+                    }
+                }
+            }
+            let positions = {
+                "barDefaultColor": "#8884d8",
+                "xLabelMin": x_label_min,
+                "xLabelMax": x_label_max,
+                "data": []
+            }
+            for(let [key, value] of Object.entries(temp_dat['data']['position_stats'])) {
+                positions.data.push({
+                    "barName":"",
+                    "count": value,
+                    "participantLocation": false
+                });
+            }
+            setCurrentPositions(positions);
         }
     }
 
@@ -111,6 +173,8 @@ function HostLiveEvent({fetchQuestions}){
                     questionIndex={questionIndex}
                     goNextPage={() => {} }
                     nextQuestion={() => nextQuestion()}
+                    currentPositions={currentPositions}
+                    questionsStats={questionsStats}
                 />
             );
     }

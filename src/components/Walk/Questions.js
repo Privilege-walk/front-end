@@ -10,6 +10,8 @@ import Box from '@mui/material/Box';
 
 import CardContent from '@mui/material/CardContent';
 import Timer from './Timer';
+import QuestionGraph from "../Graphs/QuestionGraph";
+import WalkGraph from "../Graphs/WalkGraph";
 
 
 export default class Questions extends React.Component{
@@ -100,7 +102,12 @@ export default class Questions extends React.Component{
                                 inputProps={{ 'aria-label': 'A' }}
                                 disabled={this.state.disalbleSubmit}
                             />
-                            <FormLabel id={"radio-label-"+choice.id}>{choice.description}</FormLabel>
+                            <FormLabel 
+                                id={"radio-label-"+choice.id}
+                                onClick={() => this.setState({selectedValue: choice.id})}
+                            >
+                                {choice.description}
+                            </FormLabel>
                         </Box>
                         )
                     )}
@@ -125,7 +132,7 @@ export default class Questions extends React.Component{
             question = questionDetails.description;
         }
         return (
-            <Grid container lg={10} sx={{ minHeight: '225px'}} item direction='column'>
+            <Grid container lg={1} sx={{ minHeight: '225px'}} item direction='column'>
                 {/* Question */}
                 <Grid item>
                     <Typography id={"question"} data-testid={"question"} variant="h6" component="div">
@@ -165,7 +172,7 @@ export default class Questions extends React.Component{
         const question = this.props.questions[this.props.questionIndex];
         const questionIndex = question? question.id: "";
         return (
-            <Grid container lg={1} sx={{minHeight: '50px'}} item direction='column'>
+            <Grid container sx={{minHeight: '50px'}} item direction='column'>
                 {/* Number of people who have answered so far */}
                 {/* <Grid item>
                     <Typography  variant="h6" component="div"> 
@@ -185,7 +192,7 @@ export default class Questions extends React.Component{
                         <Button 
                             variant={this.props.activeUsers == this.props.answeredUsers? "contained" : "outlined"}
                             type="submit"
-                            sx={{mt:2}}
+                            sx={{mt:2, width: '30%'}}
                             onClick={()=> this.props.nextQuestion()}                         
                         >
                             Next Question
@@ -211,25 +218,50 @@ export default class Questions extends React.Component{
             </Grid>
         );
     }
+    renderHostGraphs() {
+        return (
+            <Grid container item direction='column'>
+                <Grid container direction="column" item >
+                    <Typography id="question_graph"  variant="p" component="div">
+                        {this.props.questions[this.props.questionIndex]['description']}
+                    </Typography>
+                    <QuestionGraph data={this.props.questionsStats[this.props.questionIndex]} />
+                </Grid>
+                {
+                    this.props.currentPositions &&
+                    this.props.currentPositions.hasOwnProperty('data') &&
+                    this.props.currentPositions['data'].length !== 0 &&
+                    <Grid container direction="column" item >
+                        <Typography id="question_graph"  variant="p" component="div">
+                            Current Positions
+                        </Typography>
+                        <WalkGraph data={this.props.currentPositions} />
+                    </Grid>
+                }
+            </Grid>
+        );
+    }
 
     render(){
         switch(this.props.userType){
             case 'HOST':
                 return (
                     <Container 
-                        sx={{px:6, mt:3}}
+                        sx={{px:6, mt:3, display: 'flex', flexDirection: 'row'}}
                     >
                         <Grid 
                             sx={{minHeight: '40px'}} 
                             container 
-                            justifyContent='center' 
+                            // justifyContent='center' 
                             alignItems='center' 
                             direction='column' 
                             spacing={2}
-                        ></Grid>
-                        {this.renderHeader()}
-                        {this.renderHostBody()}
-                        {this.renderFooter()}
+                        >
+                            {this.renderHeader()}
+                            {this.renderHostBody()}
+                            {this.renderFooter()}
+                        </Grid>
+                        {this.renderHostGraphs()}
                     </Container>
                 )
         }
