@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import { act } from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 
+import Router from "react-router-dom";
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
@@ -11,6 +12,11 @@ import Events from '../events';
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+    Navigate: () => "Navigate",
+    useNavigate: () => mockedUsedNavigate,
+}))
 
 const mockCreateEvent = jest.fn();
 const mockFetchEvents = jest.fn();
@@ -59,7 +65,7 @@ test('renders without crashing: empty list', () => {
 
 
 test("create event successfully", async () => {
-    let utils = setup();
+    let utils = setup(15);
     const { newEventInput, submitBtn, newEventError } = utils;
     mockCreateEvent.mockReturnValueOnce({payload: {status: "created"}});
     mockFetchEvents.mockReturnValueOnce({payload: {events: []}});

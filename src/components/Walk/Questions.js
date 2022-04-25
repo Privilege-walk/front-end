@@ -96,14 +96,16 @@ export default class Questions extends React.Component{
                         <Box key={choice.id}>
                             <Radio
                                 checked={choice.id === this.state.selectedValue}
-                                onChange={() => this.setState({selectedValue: choice.id})}
+                                onClick={() => this.setState({selectedValue: choice.id})}
                                 value={choice.id}
                                 name={"radio-buttons-"+choice.id}
                                 inputProps={{ 'aria-label': 'A' }}
                                 disabled={this.state.disalbleSubmit}
+                                data-testid={"choice"+choice.id}
                             />
                             <FormLabel 
                                 id={"radio-label-"+choice.id}
+                                data-testid={"radio-label-"+choice.id}
                                 onClick={() => this.setState({selectedValue: choice.id})}
                             >
                                 {choice.description}
@@ -223,7 +225,10 @@ export default class Questions extends React.Component{
             <Grid container item direction='column'>
                 <Grid container direction="column" item >
                     <Typography id="question_graph"  variant="p" component="div">
-                        {this.props.questions[this.props.questionIndex]['description']}
+                        {
+                            this.props.questions[this.props.questionIndex] !== undefined &&
+                            this.props.questions[this.props.questionIndex]['description']
+                        }
                     </Typography>
                     <QuestionGraph data={this.props.questionsStats[this.props.questionIndex]} />
                 </Grid>
