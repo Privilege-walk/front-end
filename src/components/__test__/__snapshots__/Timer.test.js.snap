@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<DocumentFragment>
+  <span
+    class="MuiBox-root css-msn52r"
+  >
+    Time - 01 : 39
+  </span>
+</DocumentFragment>
+`;

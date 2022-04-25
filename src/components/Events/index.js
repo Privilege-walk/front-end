@@ -36,9 +36,9 @@ class Events extends React.Component {
         }
     }
 
-    changeNewEventName = (newEventName) => {
-        this.setState({newEventName});
-    }
+    // changeNewEventName = (newEventName) => {
+    //     this.setState({newEventName});
+    // }
 
     changeEventsList = (eventsList) => {
         this.setState({eventsList});
