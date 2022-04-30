@@ -13,6 +13,10 @@ import Questions from './Questions';
 const QRCODE_PAGE = 0;
 const QUESTIONS_PAGE = 1;
 
+// session storage keys
+const EVENT_ID_KEY = "EVENT_ID";
+const QUESTION_INDEX_KEY = "QUESTION_INDEX";
+
 function HostLiveEvent({fetchQuestions}){
     const [pageIndex, setPageIndex] = useState(QRCODE_PAGE);
     const [eventName, setEventName] = useState("");
@@ -29,6 +33,29 @@ function HostLiveEvent({fetchQuestions}){
     const navigate = useNavigate();
 
     useEffect(async () => fetchAllQuestions(), []);
+    useEffect(async () => fetchQuestionIndex(), []);
+
+    async function fetchQuestionIndex() {
+        const savedEventId = sessionStorage.getItem(EVENT_ID_KEY);
+        if(eventId != savedEventId){
+            // If this is a new event, then clear session storage data from any previous event
+            sessionStorage.clear();
+        }else{
+            let savedQuestionIndex = sessionStorage.getItem(QUESTION_INDEX_KEY);
+            if (savedQuestionIndex != null){
+                // If event had already started then go to where you left off.
+                if (questions.length > 0){
+                    savedQuestionIndex = Math.min(questions.length, savedQuestionIndex);
+                    sessionStorage.setItem(QUESTION_INDEX_KEY, savedQuestionIndex);
+                } 
+                setQuestionIndex(savedQuestionIndex);
+                if (savedQuestionIndex >= 0){
+                    setPageIndex(QUESTIONS_PAGE);
+                }
+            }
+        }      
+    }
+
 
     async function fetchAllQuestions() {
         const action = await fetchQuestions({ params: {event_id: eventId} });
@@ -36,6 +63,11 @@ function HostLiveEvent({fetchQuestions}){
             setErrMsg("Unable to display the questions list!");
         }else{
             setQuestionsList(action.payload.questions);
+            if(questionIndex >= action.payload.questions.length){
+                const newQuestionIndex = action.payload.questions.length - 1;
+                setQuestionIndex(newQuestionIndex);
+                sessionStorage.setItem(QUESTION_INDEX_KEY, newQuestionIndex);
+            }
             createQuestionsStats(action.payload.questions);
             setEventName(action.payload.name);
             set_x_label_min(action.payload['x_label_min']);
@@ -84,6 +116,11 @@ function HostLiveEvent({fetchQuestions}){
         if(inData['type'] === 'active_user_count') {
             // setActiveUsers(inData['data']['n_active_users'] - 1);
             setActiveUsers(inData['data']['n_active_users']);
+            const expectedQuestionIndex = inData["data"]["question_index"];
+            setQuestionIndex(Math.min(expectedQuestionIndex,));
+            if (expectedQuestionIndex >= 0){
+                setPageIndex(QUESTIONS_PAGE)
+            }
         }
 
         // Handling the change in the number of user responses
@@ -121,16 +158,19 @@ function HostLiveEvent({fetchQuestions}){
 
     function nextQuestion(index=null){
         if (questionIndex < questionsList.length){
-            index = index? index != null : questionIndex + 1;
+            index = index != null? index : questionIndex + 1;
+            const endEvent = index == questionsList.length;
             const message = {
                 "type": "question_move",
                 "data": {
-                    "questionIndex": index,
+                    "questionIndex": Math.min(index, questionsList.length-1),
+                    "endEvent": endEvent
                 }
             };
             sendJsonMessage(message);
             
-            if (index == questionsList.length){
+            if (endEvent){
+                // Add end event socket message
                 navigate(`/results/${eventId}/host`);
             }else{
                 setQuestionIndex(index);

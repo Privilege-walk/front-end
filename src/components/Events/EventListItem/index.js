@@ -21,6 +21,10 @@ export default function EventListItem({ id, name, status }) {
         navigate('/host/walk/' + id);
     }
 
+    function redirectToEventResultsPage(){
+        navigate(`/results/${id}/host`);
+    }
+
     function renderNewEventActions(){
         return(
             <React.Fragment>
@@ -48,10 +52,10 @@ export default function EventListItem({ id, name, status }) {
     function renderEndEventActions(){
         return (<React.Fragment>
                 <Button 
-                    id={'edit-'+id}
+                    id={'edit-' + id}
                     variant="outlined" 
                     size="md"
-                    onClick={redirectToQuestions}
+                    onClick={redirectToEventResultsPage}
                 >
                     Results
                 </Button>
@@ -59,7 +63,7 @@ export default function EventListItem({ id, name, status }) {
     }
 
     let cardActionsFunc = renderEndEventActions;
-    let badgeColor = "danger";
+    let badgeColor = "success";
     if(status == "created"){
         badgeColor = "primary";
         cardActionsFunc = renderNewEventActions;

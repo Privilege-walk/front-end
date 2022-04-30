@@ -20,7 +20,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.BASE_URL': JSON.stringify('http://54.157.248.16:8000'),
             'process.env.WEB_SOCKET_BASE_URL': JSON.stringify('ws://54.157.248.16:8000'),
-            'process.env.FRONTEND_BASE_URL': JSON.stringify('https://privilegewalk.herokuapp.com')
+            'process.env.FRONTEND_BASE_URL': JSON.stringify('http://privilegewalk.herokuapp.com')
         }),
     ],
 

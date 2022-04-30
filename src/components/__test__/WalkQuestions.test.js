@@ -95,7 +95,7 @@ test('when participant selects a choice', async () => {
 })
 
 test('when participant changes their choice multiple times', async () => {
-    let mockProps = {...props, userType:'PARTICIPANT'};
+    let mockProps = {...props, userType:'PARTICIPANT', answers : {}};
     let utils;
     act (() => {
         utils = render( <Questions {...mockProps} />);

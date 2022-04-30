@@ -62,6 +62,7 @@ class Events extends React.Component {
             this.setErrMsg("Unable to display the events list!");
         }else{
             this.changeEventsList(action.payload.events);
+            console.log(action.payload.events);
         }
     }
 

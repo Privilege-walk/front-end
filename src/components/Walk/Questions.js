@@ -18,11 +18,20 @@ export default class Questions extends React.Component{
     
     constructor(props){
         super(props);
-        let questionDetails = this.props.questions[this.props.questionIndex];
+        const selectedValue = this.getSelectedValue();
         this.state = {
-            selectedValue: questionDetails ? questionDetails.choices[0].id : "",
-            disalbleSubmit: false
+            selectedValue,
+            disalbleSubmit: selectedValue != ""
         };
+    }
+
+    getSelectedValue(){
+        let questionDetails = this.props.questions[this.props.questionIndex];
+        let selectedValue = "";
+        if(questionDetails && this.props.answers){
+            selectedValue = this.props.answers[questionDetails.id] || "";
+        }
+        return selectedValue;
     }
 
     componentDidUpdate(prevProps) {
@@ -33,6 +42,14 @@ export default class Questions extends React.Component{
                 selectedValue: questionDetails ? questionDetails.choices[0].id : ""
             });
         }
+
+        if(this.props.answers !== prevProps.answers || this.props.questions !== prevProps.questions){
+            const selectedValue = this.getSelectedValue();
+            this.setState({
+                selectedValue,
+                disalbleSubmit: selectedValue != ""
+            });
+        }
     }
     
     handleSelectChoice(choiceId){
@@ -40,7 +57,7 @@ export default class Questions extends React.Component{
         let answer = choiceId;
         const props = this.props;
         let answers = { ...props.answers };
-        let questionId = props.questions[props.questionIndex].id;
+        const questionId = props.questions[props.questionIndex].id;
         answers[questionId] = answer;
         props.setAnswers(answers);
     }
@@ -67,10 +84,12 @@ export default class Questions extends React.Component{
     renderBody(){
         let question = ""; 
         let choices = [];
-        let questionDetails = this.props.questions[this.props.questionIndex];
+        let questionId = "";
+        let questionDetails = this.props.questions[this.props.questionIndex];  
         if(questionDetails){
             question = questionDetails.description;
             choices = questionDetails.choices;
+            questionId = questionDetails.id;
         }
         return (
             <Grid container lg={10} sx={{ minHeight: '225px'}} item direction='column'>
@@ -171,8 +190,9 @@ export default class Questions extends React.Component{
     }
 
     renderFooter(){
+        
         const question = this.props.questions[this.props.questionIndex];
-        const questionIndex = question? question.id: "";
+        const questionId = question? question.id: "";
         return (
             <Grid container sx={{minHeight: '50px'}} item direction='column'>
                 {/* Number of people who have answered so far */}
@@ -206,7 +226,7 @@ export default class Questions extends React.Component{
                             type="submit"
                             sx={{mt:2}}
                             onClick={()=> {}}     
-                            disabled={!this.props.answers[questionIndex]}        
+                            disabled={!this.props.answers[questionId]}        
                         >
                             
                             Waiting for host ...
